@@ -3,6 +3,145 @@
     src: url(../fonts/Inria_Serif/InriaSerif-Regular.ttf);
   }
 
-* {
+body, html {
+  background-color: #000;
+}
+
+body, html, * {
     font-family: inria;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.home {
+  display: grid;
+
+  /* height: 1000px;
+  width: 100%; */
+
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(3,1fr);  */
+  grid-template-rows: 300px 400px 400px;
+  grid-template-areas: 
+    "header header header"
+    "description title none"
+    "section . menu"
+    ;
+
+  gap: 20px;
+
+  background-image:  url(/assets/pics/industrial_2.jpg);
+  background-size: cover;
+}
+
+.home .header {
+  grid-area: header;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid black; */
+  width: 100%;
+  flex-wrap: wrap;
+  align-self: baseline;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.home .header>.title {
+  background-color: inherit;
+  border-width: 2px;
+  /* border-style: solid; */
+  text-align: left;
+  flex: 1;
+  height: auto;
+  font-size: 3rem;
+}
+
+.home .header>.logo {
+  background-color: inherit;
+  border-width: 2px;
+  /* border-style: solid; */
+  text-align: center;
+  flex: 1;
+  height: 200px;
+}
+
+.home .header>.logo>img {
+  height: inherit;
+  width: inherit;
+  background-color: transparent;
+}
+
+.home .header>.contatti{
+  background-color: inherit;
+  border-width: 2px;
+  /* border-style: solid; */
+  text-align: center;
+  flex: 1;
+  height: auto;
+  font-size: 2rem;
+  display: flex;
+}
+
+.home .header>.contatti>span{
+  background-color: inherit;
+  border-width: 2px;
+  /* border-style: solid; */
+  text-align: center;
+  flex: 1;
+  justify-content: space-around;
+  height: auto;
+  font-size: 2rem;
+}
+
+.home>.description{
+  width: 400px;
+  justify-self: center;
+  align-self: baseline;
+  grid-area: description;
+  background-color: transparent;
+  font-size: 23px;
+}
+
+.home>.title {
+  /* border-width: 2px;
+  border-style: solid; */
+  background: transparent;
+  grid-area: title;
+  justify-self: center;
+  align-self: center;
+  font-size: 80px;
+  text-align: center;
+}
+
+.home>.section {
+  font-size: 2rem;
+  grid-area: section;
+  justify-self: left;
+  align-self: flex-end;
+}
+
+.home>.menu {
+  grid-area: menu;
+  align-self: flex-end;
+  background-color: #000;
+  display: flex;
+}
+
+.home>.menu>div {
+  flex: 1;
+  height: 1fr;
+  justify-content: right;
+  align-items: flex-end;
+}
+
+.home>.menu>div>.num {
+  font-size: 40px;
+}
+
+.home>.menu>div>.description {
+  font-size: 20px;
+  width: 1fr;
 }
