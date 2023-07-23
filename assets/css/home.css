@@ -15,6 +15,11 @@ body, html, * {
     color: #fff;
 }
 
+/*
+** HOMEPAGE STYLESHEET
+**
+*/
+
 .home {
   display: grid;
 
@@ -61,8 +66,8 @@ body, html, * {
 
 .home .header>.logo {
   background-color: inherit;
-  border-width: 2px;
-  /* border-style: solid; */
+  /* border-width: 2px;
+  border-style: solid; */
   text-align: center;
   flex: 1;
   height: 200px;
@@ -81,7 +86,6 @@ body, html, * {
   text-align: center;
   flex: 1;
   height: auto;
-  font-size: 2rem;
   display: flex;
 }
 
@@ -137,6 +141,10 @@ body, html, * {
   align-items: flex-end;
 }
 
+.home>.menu>div:hover {
+  cursor: pointer;
+}
+
 .home>.menu>div>.num {
   font-size: 40px;
 }
@@ -145,3 +153,123 @@ body, html, * {
   font-size: 20px;
   width: 1fr;
 }
+
+/*
+** GALLERY STYLESHEET
+**
+*/
+
+.gallery>.gallery-title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.gallery>.gallery-flex {
+  display: flex;
+  background-color: transparent;
+  flex-direction: row;
+  width: 100%;
+  height: 500px;
+  justify-content: right;
+  align-content: center;
+}
+
+.gallery>.gallery-flex>.left-arrow{
+  flex: 1;
+  height: inherit;
+  display: flex;
+  flex-direction: row-reverse;
+  }
+
+.gallery>.gallery-flex>.gallery-pic{
+  flex: 1;
+  height: inherit;
+}
+
+.gallery>.gallery-flex>.right-arrow{
+  flex: 1;
+  height: inherit;
+  display: flex;
+}
+
+.gallery>.gallery-flex>.left-arrow>img {
+  height: 150px;
+  justify-self: right;
+  align-self: center;
+}
+
+.gallery>.gallery-flex>.gallery-pic>img {
+  height: inherit;
+}
+
+
+.gallery>.gallery-flex>.right-arrow>img {
+  height: 150px;
+  align-self: center;
+  justify-self: left;
+}
+
+.gallery>.gallery-flex .blank {
+  width: 30px;
+}
+
+
+/*
+** FOOTER STYLESHEET
+**
+*/
+
+.footer {
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footer>.logo {
+  height: 200px;
+}
+
+.footer>.logo>img {
+  height: inherit;
+}
+
+.footer>.info {
+  align-self: center;
+}
+
+.footer>.menu {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer .blank {
+  height: 15px;
+}
+
+
+
+
+
+
+
+
+/*
+** MEDIA QUERY BREAKPOINTS
+**
+*/
+
+
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+
+@media (max-width:600px)  {}
+/* @media (min-width:480px)  { smartphones, Android phones, landscape iPhone } */
+/* @media (min-width:600px)  { portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) } */
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
