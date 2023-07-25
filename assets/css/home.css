@@ -4,6 +4,7 @@
   }
 
 body, html {
+  cursor: default;
   background-color: #000;
 }
 
@@ -79,6 +80,10 @@ body, html, * {
   background-color: transparent;
 }
 
+.home .header>.logo>img:hover {
+  cursor: pointer;
+}
+
 .home .header>.contatti{
   background-color: inherit;
   border-width: 2px;
@@ -93,11 +98,15 @@ body, html, * {
   background-color: inherit;
   border-width: 2px;
   /* border-style: solid; */
-  text-align: center;
+  text-align: left;
   flex: 1;
   justify-content: space-around;
   height: auto;
   font-size: 2rem;
+}
+
+.home .header>.contatti>span:hover {
+  cursor: pointer;
 }
 
 .home>.description{
@@ -164,12 +173,16 @@ body, html, * {
   font-size: 40px;
 }
 
+.gallery>.gallery-title:hover {
+  cursor: pointer;
+}
+
 .gallery>.gallery-flex {
   display: flex;
   background-color: transparent;
   flex-direction: row;
   width: 100%;
-  height: 500px;
+  height: 400px;
   justify-content: right;
   align-content: center;
 }
@@ -198,8 +211,18 @@ body, html, * {
   align-self: center;
 }
 
+.gallery>.gallery-flex>.left-arrow>img:hover {
+  cursor: pointer;
+  filter: brightness(0.70);
+}
+
 .gallery>.gallery-flex>.gallery-pic>img {
   height: inherit;
+}
+
+.gallery>.gallery-flex>.gallery-pic>img:hover {
+  cursor: pointer;
+  filter: brightness(0.70);
 }
 
 
@@ -207,6 +230,11 @@ body, html, * {
   height: 150px;
   align-self: center;
   justify-self: left;
+}
+
+.gallery>.gallery-flex>.right-arrow>img:hover {
+  cursor: pointer;
+  filter: brightness(0.70);
 }
 
 .gallery>.gallery-flex .blank {
@@ -237,6 +265,10 @@ body, html, * {
   height: inherit;
 }
 
+.footer>.logo>img:hover {
+  cursor: pointer;
+}
+
 .footer>.info {
   align-self: center;
 }
@@ -246,6 +278,10 @@ body, html, * {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.footer>.menu:hover {
+  cursor: pointer;
 }
 
 .footer .blank {
@@ -267,7 +303,64 @@ body, html, * {
 
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
 
-@media (max-width:600px)  {}
+@media (max-width:1450px)  
+{
+
+  .home {
+    grid-template-rows: 160px 300px 160px;
+    gap: 10px;
+  }
+  
+  .home .header>.title {
+    font-size: 2rem;
+  }
+
+  .home .header>.logo {
+    height: 150px;
+  }
+
+  .home .header>.contatti>span{
+    font-size: 22px;
+  }
+
+  .home>.description {
+    width: 250px;
+    font-size: 15px;
+  }
+
+  .home>.title {
+    font-size: 50px;
+  }
+
+  .home>.menu>div>.num {
+    font-size: 25px;
+  }
+
+  .home>.menu>div>.description {
+    font-size: 10px;
+    width: 1fr;
+  }
+
+  .home>.section {
+    font-size: 22px;
+  }
+
+  .gallery>.gallery-title {
+    font-size: 25px;
+  }
+
+  .gallery>.gallery-flex {
+    height: 350px;
+  }
+
+  .footer {
+    font-size: 15px;
+  }
+
+  .footer>.logo {
+    height: 150px;
+  }
+}
 /* @media (min-width:480px)  { smartphones, Android phones, landscape iPhone } */
 /* @media (min-width:600px)  { portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) } */
 @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
