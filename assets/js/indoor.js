@@ -105,25 +105,9 @@ class Pin
 }
 
 const main = () => {
-    // let pinIndoor;
-    // let pinContemporaneo;
-    // let pinJungle1;
-    // let pinJungle2;
-    // let pinEtnico1;
-    // let pinEtnico2;
-    // let pinIndustriale1;
-    // let pinIndustriale2;
-    // let pinMediterraneo;
-    // let pinVintage1;
-    // let pinVintage2;
-    // let pinMinimalista;
-    // let pinShabby;
-    // let pinScandinavo;
-
     let pins = [];
 
     createPins = function () {
-        pins.push( new Pin(800,850, "LIDAS", "€149.90","Sedie e poltrone") );
         pins.push ( new Pin(2050,1250, "KIVIK", "€1599.90","Divani") );
         pins.push( new Pin(3250,820, "FEJKA", "€34.99","Decorazioni casa") );
         pins.push ( new Pin(2800,1550, "FLAKNAN", "€79.90","Decorazioni casa") );
@@ -133,6 +117,7 @@ const main = () => {
         pins.push ( new Pin(5700,1200, "TARSELE", "€100.90","Tavoli") );
         pins.push ( new Pin(6600,1520, "AZUL", "€350.90","Sedie e poltrone") );
         pins.push ( new Pin(7800,1500, "BILD", "€50.90","Decorazioni casa") );
+        pins.push( new Pin(8050,1530, "LIDAS", "€149.90","Sedie e poltrone") );
         pins.push ( new Pin(7940,900, "PINNTORP", "€189.90","Tavoli") );
         pins.push ( new Pin(9300,1000, "MINIMAL", "€249.90","Sedie e poltrone") );
         pins.push ( new Pin(10500,1100, "KASBAH", "€69.90","Sedie e poltrone") );

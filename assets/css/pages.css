@@ -56,6 +56,18 @@ body, html {
     font-size: 3rem;
   }
 
+  .bold {
+    font-weight: 900;
+  }
+
+  .page-color {
+    color: #517965;
+  }
+
+  .light-grey {
+    color: #ccccccad;
+  }
+
 /*
 ** HEADER STYLESHEET
 **
@@ -156,6 +168,15 @@ body, html {
 }
 
 /*
+** DESCRIPTION
+**
+*/
+
+.description {
+  text-align: center;
+}
+
+/*
 ** PIN
 **
 */
@@ -251,6 +272,7 @@ body, html {
 */
 
 .footer {
+  background-color: #517965;
   font-size: 25px;
   display: flex;
   flex-direction: row;
@@ -261,7 +283,7 @@ body, html {
 }
 
 .footer>.logo {
-  height: 200px;
+  height: 150px;
 }
 
 .footer>.logo>img {
