@@ -1,0 +1,47 @@
+#profile-name {
+    color: white;
+    font-size: 7rem;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container .profile-info {
+    flex: 5;
+    color: #fff;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.container .image {
+    flex: auto;
+}
+
+.container .image img {
+    height: 500px;
+}
+
+.container .blank {
+    flex: 1;
+}
+
+.order #order-title {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.order .order-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid yellow;
+}
+
+.order .order-container .order-element {
+    flex: 200px;
+    border: 1px solid red;
+}
