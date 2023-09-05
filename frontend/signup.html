@@ -31,25 +31,28 @@
         <div class="box">
             <br>
             <div id="sign-up">Sign up</div>
-            <div>Sei già registrato? <a class="page-color no-line" id="accedi" href="">Accedi</a></div>
+            <div>Sei già registrato? <a class="page-color no-line" id="accedi" href="signin.html">Accedi</a></div>
             <br>
 
             <div class="input-container">
                 <br>
+                <div id="name-area">
+                    <input id="name" placeholder="Nome" type="text"/>
+                </div>
                 <br>
-                <input placeholder="Nome" type="text"/>
+                <div id="surname-area">
+                    <input id="surname" placeholder="Cognome" type="text"/>
+                </div>
                 <br>
+                <div id="email-area">
+                    <input id="email" placeholder="E-mail" type="email"/>
+                </div>
                 <br>
-                <input placeholder="Cognome" type="text"/>
+                <div id="password-area">
+                    <input id="password" placeholder="Password" type="password"/>
+                </div>
                 <br>
-                <br>
-                <input placeholder="E-mail" type="email"/>
-                <br>
-                <br>
-                <input placeholder="Password" type="password"/>
-                <br>
-                <br>
-                <button>Registrati</button>
+                <button id="registrati">Registrati</button>
             </div>
             <div>oppure usa un social network</div>
             <br>
@@ -108,6 +111,7 @@
         </div>
 
     </div>
-    
+
+    <script src="assets/js/signup.js"></script>
 </body>
 </html>

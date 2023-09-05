@@ -144,7 +144,10 @@ const main = () => {
 
                         // event button save to cart
                         cart_button.addEventListener("click", () => {
-                            const cart = JSON.parse(window.localStorage.getItem("cart"));
+                            let cart = JSON.parse(window.localStorage.getItem("cart"));
+                            if(cart == null) {
+                                cart = [];
+                            }
                             const current_product = {
                                 name: product.name,
                                 cart_quantity: selection.value,
@@ -416,6 +419,17 @@ const main = () => {
 
     init();
     setEvents();
+
+    let signButton = document.getElementById("sign");
+    const auth = JSON.parse(window.localStorage.getItem("auth"));
+    
+    if(auth.accessToken !== "") {
+        signButton.innerHTML = "Profilo 👤";
+        signButton.setAttribute("href", "profile.html");
+    } else {
+        signButton.innerHTML = "Sign up";
+        signButton.setAttribute("href", "signup.html");
+    }
 }
 
 window.onload = () => { main(); }

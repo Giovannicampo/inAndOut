@@ -132,7 +132,8 @@ const main = () => {
 
     setEvents = function () {
         window.onresize = () => {
-            for(p of pins){
+            for(var i=0; i<pins.length; i++){
+            const p = pins[i];
             p.resize();
             }
         }
@@ -143,6 +144,17 @@ const main = () => {
         setEvents();
     };
     init();
+
+    let signButton = document.getElementById("sign");
+    const auth = JSON.parse(window.localStorage.getItem("auth"));
+    
+    if(auth.accessToken !== "") {
+        signButton.innerHTML = "Profilo 👤";
+        signButton.setAttribute("href", "profile.html");
+    } else {
+        signButton.innerHTML = "Sign up";
+        signButton.setAttribute("href", "signup.html");
+    }
 }
 
 window.onload = () => { main(); }

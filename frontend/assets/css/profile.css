@@ -45,3 +45,83 @@
     flex: 200px;
     border: 1px solid red;
 }
+
+#address-data {
+    font-size: 28px;
+    color: #517965;
+}
+
+#payment-data {
+    font-size: 28px;
+    color: #517965;
+}
+
+#change-email:hover, #change-password:hover, #change-address:hover, #change-payment:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.success {
+    position: fixed;
+    font-size: 4rem;
+    height: 500px;
+    width: 700px;
+    border: 2px solid #517965;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.x-button {
+    text-align: right;
+    font-size: 3rem;
+    height: 100px;
+}
+
+.x-button span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.message {
+    text-align: center;
+    font-size: 25px;
+    color: #517965;
+}
+
+.link {
+    text-align: center;
+    font-size: 2rem;
+    color: #517965;
+}
+
+.link span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.input-modal {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #517965;
+    font-size: 22px;
+    background-color: transparent;
+    color: #517965;
+    text-align: center;
+}
+
+.button-modal {
+    width: 20%;
+    background-color: #517965;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    /* border: 2px solid #eaeaea; */
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+.button-modal:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}

@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
     // if user exists already, return error
     if (user)
       return res.status(500).json({
-        message: "User already exists! Try logging in. 😄",
+        message: "Utente già esistente! Prova ad accedere. 😄",
         type: "warning",
       });
     // 2. if user doesn't exist, create a new user
@@ -25,12 +25,22 @@ router.post("/signup", async (req, res) => {
       surname: surname,
       email: email,
       password: passwordHash,
+      deliveryInfo: {
+        address: "",
+        postalCode: "",
+        country: ""
+      },
+      paymentCard: {
+        numberCard: "",
+        expirationDate: "",
+        pass: ""
+      }
     });
     // 3. save the user to the database
     await newUser.save();
     // 4. send the response
     res.status(200).json({
-      message: "User created successfully! 🥳",
+      message: `Complimenti ${newUser.name}, hai creato il tuo profilo! 🥳`,
       type: "success",
     });
   } catch (error) {
@@ -62,7 +72,7 @@ router.post("/signin", async (req, res) => {
       // if user doesn't exist, return error
       if (!user)
         return res.status(500).json({
-          message: "User doesn't exist! 😢",
+          message: "L'utente non esiste! 😢",
           type: "error",
         });
       // 2. if user exists, check if password is correct
@@ -71,7 +81,7 @@ router.post("/signin", async (req, res) => {
       // if password is incorrect, return error
       if (!isMatch)
         return res.status(500).json({
-          message: "Password is incorrect! ⚠️",
+          message: "La password non è corretta! ⚠️",
           type: "error",
         });
   
@@ -191,6 +201,69 @@ router.get("/protected", protected, async (req, res) => {
     });
   }
 });
+
+//Update by ID Method
+router.patch('/protected/update', protected, async (req, res) => {
+  try {
+    let result = {};
+      // if user exists in the request, send the data
+      if (req.user) {
+        result = await User.findByIdAndUpdate(
+          req.user.id, req.body, {new: false}
+        )
+        const _user = await User.findById(req.user.id);
+        const toSend = {
+          type: "success",
+          user: _user
+        }
+        res.send(toSend);
+      }
+  }
+  catch (error) {
+      res.status(400).json({ 
+        message: error.message,
+        type: "error",
+        message: "Error"
+      })
+  }
+})
+
+//Update by ID Method password
+router.patch('/protected/update/password', protected, async (req, res) => {
+  try {
+    const { oldpassword, newpassword} = req.body;
+    const isMatch = await compare(oldpassword, req.user.password);
+    const passwordHash = await hash(newpassword, 10);
+  
+    // if password is incorrect, return error
+    if (!isMatch)
+      return res.status(500).json({
+        message: "La password non è corretta! ⚠️",
+        type: "error_pass",
+      });
+    
+    let result = {};
+      // if user exists in the request, send the data
+      if (req.user) {
+        result = await User.findByIdAndUpdate(
+          req.user.id, {password: passwordHash}, {new: false}
+        )
+        const _user = await User.findById(req.user.id);
+        const toSend = {
+          type: "success",
+          user: _user
+        }
+        res.send(toSend);
+      }
+  }
+  catch (error) {
+      res.status(400).json({ 
+        message: error.message,
+        type: "error",
+        message: "Error"
+      })
+  }
+})
 
 
   

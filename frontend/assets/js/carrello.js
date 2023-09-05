@@ -1,6 +1,7 @@
 const main = () => {
 
     let cartContainer = document.getElementsByClassName("cart-container")[0];
+    let blankSpace = document.getElementsByClassName("blank-space")[0];
 
     updateSumUpData = function () {
         // sum up data
@@ -125,8 +126,8 @@ const main = () => {
         const paymentButton = document.getElementById("payment-button");
 
         const auth = JSON.parse(window.localStorage.getItem("auth"));
-        console.log(auth);
-        if(auth == true) {
+        // console.log(auth.accessToken);
+        if(auth.accessToken != "") {
             paymentButton.setAttribute("href", "payment.html");
         }
         else
@@ -134,8 +135,11 @@ const main = () => {
     }
 
     init = function () {
-        const cart = JSON.parse(window.localStorage.getItem("cart"));
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
         console.log(cart);
+        if (cart.length > 0) {
+            cartContainer.removeChild(blankSpace);
+        }
         if(cart != []) {
             for(var i=0; i<cart.length; i++) {
                 const current_product = cart[i];
@@ -146,6 +150,17 @@ const main = () => {
 
     init();
     setEvents();
+
+    let signButton = document.getElementById("sign");
+    const auth = JSON.parse(window.localStorage.getItem("auth"));
+    
+    if(auth.accessToken !== "") {
+        signButton.innerHTML = "Profilo 👤";
+        signButton.setAttribute("href", "profile.html");
+    } else {
+        signButton.innerHTML = "Sign up";
+        signButton.setAttribute("href", "signup.html");
+    }
 }
 
 window.onload = () => {main();}

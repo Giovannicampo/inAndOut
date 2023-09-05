@@ -10,6 +10,7 @@ const user = new mongoose.Schema({
         type: String
     },
     cart: [],
+    orders: [],
     deliveryInfo: {
         address: {
             required: false,
@@ -31,7 +32,7 @@ const user = new mongoose.Schema({
         },
         expirationDate: {
             required: false,
-            type: Date
+            type: String
         },
         pass: {
             required: false,

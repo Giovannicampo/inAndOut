@@ -19,7 +19,8 @@
             <span> <a class="white-text no-line" href="indoor.html">Indoor</a> </span>
             <span> <a class="white-text no-line" href="outdoor.html">Outdoor</a>  </span>
             <span> <a class="white-text no-line" href="prodotti.html">Prodotti</a> </span>
-            <span> <a class="white-text no-line" href="signup.html">Sign out</a> </span>
+            <span> <a class="white-text no-line" href="carrello.html">Carrello</a> </span>
+            <span> <a class="white-text no-line" id="sign-out">Sign out</a> </span>
         </div>
     </div>
     <br><br>
@@ -33,17 +34,18 @@
         <div class="blank"></div>
         <div class="profile-info">
             <p class="page-color font-3rem">Informazioni generali</p>
-            <p> Nome Cognome </p>
-            <p> email@email.com </p>
-            <p> Indirizzo di spedizione </p>
-            <p> Metodo di pagamento</p>
+            <p id="email"> email@email.com </p>
+            <p id="address-title"> Indirizzo di spedizione </p>
+            <p id="address-data"></p>
+            <p id="payment-title"> Metodo di pagamento</p>
+            <p id="payment-data"></p>
             <br>
             <br>
             <br>
-            <p> Cambia e-mail</p>
-            <p> Cambia password </p>
-            <p> Cambia indirizzo di spedizione</p>
-            <p> Cambia metodo di pagamento</p>
+            <p> <span id="change-email">Cambia e-mail</span> </p>
+            <p> <span id="change-password">Cambia password</span> </p>
+            <p> <span id="change-address">Inserisci o cambia indirizzo di spedizione</span> </p>
+            <p> <span id="change-payment">Inserisci o cambia metodo di pagamento</span> </p>
         </div>
 
         <div class="image">
@@ -113,5 +115,6 @@
         </div>
     
     </div>
+    <script src="assets/js/profile.js"></script>
 </body>
 </html>

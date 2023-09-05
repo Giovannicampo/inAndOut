@@ -89,3 +89,50 @@ body, html {
     height: 500px;
 }
 
+#name-area, #surname-area, #email-area, #password-area {
+    height: auto;
+}
+
+.error {
+    color: red;
+    font-size: 15px;
+    text-align: center;
+}
+
+.success {
+    position: fixed;
+    font-size: 4rem;
+    height: 300px;
+    width: 500px;
+    border: 2px solid #517965;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.x-button {
+    text-align: right;
+    font-size: 3rem;
+    height: 100px;
+}
+
+.x-button span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.message {
+    text-align: center;
+    font-size: 25px;
+    color: #517965;
+}
+
+.link {
+    text-align: center;
+    font-size: 2rem;
+    color: #517965;
+}
+
+.link span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
