@@ -28,9 +28,9 @@ const main = () => {
                     if(result.type == "success") {
                         window.localStorage.setItem("userCart", JSON.stringify([]));
                         window.localStorage.setItem("userOrders", JSON.stringify(user_orders));
-                        message.innerHTML = "Pagamento riuscito! 🥳";
+                        message.innerHTML = "Pagamento riuscito! 🥳 <br><br>";
                     } else if(result.type == "error") {
-                        message.innerHTML = "Pagamento non riuscito! 😢";
+                        message.innerHTML = "Pagamento non riuscito! 😢 <br><br>";
                         window.localStorage.setItem("auth",JSON.stringify({accessToken: ""}))
                         window.location.href = "signin.html";
                     }
@@ -185,11 +185,18 @@ const main = () => {
 
         // message
         const message = document.createElement("p");
-        message.innerHTML = "Pagamento in corso...";
+        message.innerHTML = "Pagamento in corso... <br><br>";
         message.className = "messagesuccess";
         success.appendChild(message);
 
-        // add image
+        const p = document.createElement("p");
+        p.style.textAlign = "center";
+        success.appendChild(p);
+
+        const image = document.createElement("img");
+        image.setAttribute("src", "assets/pics/header_logo.png");
+        image.className = "imagesuccess";
+        p.appendChild(image);
 
         const interval = setInterval(() => {
             clearInterval(interval);
