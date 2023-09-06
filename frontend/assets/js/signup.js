@@ -29,12 +29,25 @@ const main = () => {
     // password
     let passwordArea = document.getElementById("password-area");
     let passwordError = document.createElement("p");
-    passwordError.innerHTML = "Campo password vuoto!"
+    passwordError.innerHTML = "Almeno 8 caratteri, uno maiuscolo, uno minuscolo e un carattere speciale!"
     passwordError.className = "error";
     let passwordIsError = false;
 
     errorHandler = function (value, area, error, flag) {
         if(value == "") {
+            area.appendChild(error);
+            flag = true;
+            return true;
+        }
+        if(flag) {
+            area.removeChild(error);
+            flag = false;
+        }
+    }
+    
+    passwordHandler = function (value, area, error, flag) {
+        const regexPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/i;
+        if(value == "" || regexPassword.test(value) == false) {
             area.appendChild(error);
             flag = true;
             return true;
@@ -63,8 +76,8 @@ const main = () => {
         const modal = document.getElementsByClassName("modal")[0];
         const success = document.createElement("div");
         success.className = "success";
-        success.style.top = `${(window.innerHeight/2) - 150}`;
-        success.style.left = `${(window.innerWidth/2) - 250}`;
+        success.style.top = `${(window.innerHeight/2) - 150}px`;
+        success.style.left = `${(window.innerWidth/2) - 250}px`;
         modal.appendChild(success);
 
         // X
@@ -111,7 +124,7 @@ const main = () => {
         nameIsError = errorHandler(nameInput.value, nameArea, nameError, nameIsError);
         surnameIsError = errorHandler(surnameInput.value, surnameArea, surnameError, surnameIsError);
         emailIsError = emailHandler(emailInput.value, emailArea, emailError, emailIsError);
-        passwordIsError = errorHandler(passwordInput.value, passwordArea, passwordError, passwordIsError);
+        passwordIsError = passwordHandler(passwordInput.value, passwordArea, passwordError, passwordIsError);
         if(nameIsError || surnameIsError || emailIsError || passwordIsError) return;
 
         const newUser = {

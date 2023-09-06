@@ -38,12 +38,46 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid yellow;
 }
 
 .order .order-container .order-element {
-    flex: 200px;
-    border: 1px solid red;
+    flex: 200px 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.order .order-container .order-element .date {
+    flex: 2;
+    font-size: 28px;
+    color: #fff;
+    align-self: center;
+}
+
+.order .order-container .order-element .products {
+    flex: 2;
+    font-size: 1rem;
+    color: #fff;
+    align-self: center;
+}
+
+.order .order-container .order-element .totalmoney {
+    flex: 2;
+    font-size: 2rem;
+    color: #fff;
+    align-self: center;
+}
+
+.order .order-container .order-element .order-number {
+    flex: 2;
+    font-size: 2rem;
+    color: #fff;
+    align-self: center;
+}
+
+.order .order-container .order-element .blank {
+    flex: 1;
+    color: #fff;
 }
 
 #address-data {

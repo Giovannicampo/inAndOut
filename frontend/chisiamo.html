@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prodotti</title>
+    <title>Chi siamo</title>
     <link rel="stylesheet" href="assets/css/pages.css">
-    <link rel="stylesheet" href="assets/css/prodotti.css">
 </head>
 <body>
     <div class="header white-text">
@@ -16,63 +15,45 @@
             </a>
         </div>
         <div class="contatti">
-            <span> <a class="white-text no-line" href="indoor.html">Indoor</a> </span>
-            <span> <a class="white-text no-line" href="outdoor.html">Outdoor</a>  </span>
+            <span> <a class="white-text no-line" href="outdoor.html">Outdoor</a> </span>
+            <span> <a class="white-text no-line" href="prodotti.html">Prodotti</a></span>
             <span> <a class="white-text no-line" href="carrello.html">Carrello</a> </span>
             <span> <a class="white-text no-line" href="signup.html" id="sign">Sign up</a> </span>
         </div>
     </div>
 
-    <br>
-    <div class="subheader white-text">
-        <div id="sub-title"> &nbsp;&nbsp;&nbsp;Prodotti </div>
-        <div id="sub-ad"> Scopri i nostri prodotti </div>
-        <div id="search"> 
-            <div></div>
-            <div>
-                <input id="search-input" type="text" placeholder="Search">
-                <button id="search-button">
-                    <img src="assets/pics/icons/search-interface-symbol.png" alt="">
-                </button>
-            </div>
-            <div></div>
+    <br><br><br><br><br><br>
+
+    <div class="title">
+        <div class="text">
+            CHI SIAMO
         </div>
+        <img src="assets/pics/frame/frame1.png" alt="picture not found">
+            <!-- <img class="p2" src="assets/pics/frame/dry-clean.png" alt=""> -->
     </div>
 
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
 
-    <div class="composite">
-
-        <div class="categories">
-            <span class="white-text cat-title"> Categorie </span>
-            <br>
-            <br>
-            <p class="white-text font-2rem" id="all-products"> Tutti i prodotti </p>
-            <p class="white-text font-2rem" id="indoor-products"> Indoor </p>
-            <p class="cats" id="sedie-poltrone"> &nbsp;&nbsp;Sedie e poltrone </p>
-            <p class="cats" id="divani"> &nbsp;&nbsp;Divani </p>
-            <p class="cats" id="tavoli-indoor"> &nbsp;&nbsp;Tavoli </p>
-            <p class="cats" id="decorazioni-casa"> &nbsp;&nbsp;Decorazioni per la casa </p>
-            <p class="white-text font-2rem" id="outdoor-products"> Outdoor </p>
-            <p class="cats" id="sedie-giardino"> &nbsp;&nbsp;Sedie da giardino</p>
-            <p class="cats" id="tavoli-outdoor"> &nbsp;&nbsp;Tavoli </p>
-            <p class="cats" id="decorazioni-esterno"> &nbsp;&nbsp;Decorazioni per l'esterno </p>
+    <div class="chisiamo-container">
+        <div class="blank3"></div>
+        <div class="chisiamo">
+            in&out nasce dalla passione di due artigiani dell'interior design che hanno
+            deciso di mettersi in proprio. La sfida sta nel proporre i nostri prodotti innovativi
+            in ogni ambiente e per ogni esigenza ogni nostro cliente possa avere.
+            <br><br><br>
+            Abbiamo preparato due vetrine, una indoor e una outdoor per mostrare come i nostri prodotti
+            riescano a rivoluzionare la vostra casa, con prezzi fuori dal mercato, senza rinunciare
+            a comfort e qualità.
+            <br><br><br>
+            Vi aspettiamo!
         </div>
-
-        <div class="products" id="product-container">
-            
-        </div>
-
+        <div class="blank3"></div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br>
-
-    <div id="main-container">
-        <!-- rendering on js -->
-    </div>
+    <br><br><br><br><br><br>
 
     <div class="footer abel">
-    
+
         <div class="logo">
             <a class="height-inherit" href="index.html">
                 <img src="assets/pics/header_logo.png" alt="logo not found">
@@ -116,9 +97,21 @@
                 </a>
             </div>
         </div>
-    
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/js/product.js"></script>
+
+    <script>
+        let signButton = document.getElementById("sign");
+        const auth = JSON.parse(window.localStorage.getItem("auth"));
+        
+        if(auth.accessToken !== "") {
+            signButton.innerHTML = "Profilo 👤";
+            signButton.setAttribute("href", "profile.html");
+        } else {
+            signButton.innerHTML = "Sign up";
+            signButton.setAttribute("href", "signup.html");
+        }
+    </script>
+    
 </body>
 </html>

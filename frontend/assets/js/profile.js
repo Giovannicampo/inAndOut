@@ -13,6 +13,9 @@ const main = () => {
     let changePassword = document.getElementById("change-password");
     let signOut = document.getElementById("sign-out");
 
+    // orders
+    let orderContainer = document.getElementsByClassName("order-container")[0];
+
     // update function
     updateUser = function (delivery) {
         fetch("http://localhost:3000/api/auth/protected/update", {
@@ -67,6 +70,58 @@ const main = () => {
         email.innerHTML = user.email;
         address.innerHTML = `${user.deliveryInfo.address} ${user.deliveryInfo.postalCode} ${user.deliveryInfo.country}`;
         payment.innerHTML = `${user.paymentCard.numberCard}`;
+    }
+
+    renderOrders = function(orders) {
+        console.log(orders);
+        for(var i=0; i<orders.length; i++) {
+            const current_order = orders[i];
+            const current_products = current_order.products;
+            const current_date = current_order.date;
+            const current_orderID = current_order.orderID;
+            let price = 0;
+
+            const orderElement = document.createElement("div");
+            orderElement.className = "order-element";
+            orderContainer.appendChild(orderElement);
+
+                const blank1 = document.createElement("div");
+                blank1.className = "blank";
+                orderElement.appendChild(blank1);
+
+                const date = document.createElement("div");
+                date.className = "date";
+                date.innerHTML = current_date;
+                orderElement.appendChild(date);
+
+                const products = document.createElement("div");
+                products.className = "products";
+                orderElement.appendChild(products);
+
+                    for(var j=0; j<current_products.length; j++) {
+                        price += current_products[j].price;
+                        const prod = document.createElement("p");
+                        prod.innerHTML = `${current_products[j].name} - ${current_products[j].cart_quantity} - ${current_products[j].maincategory} ${current_products[j].category}`;
+                        products.appendChild(prod);
+                    }
+                
+                const totalMoney = document.createElement("div");
+                totalMoney.className = "totalmoney";
+                totalMoney.innerHTML = "€" + price.toFixed(2);
+                orderElement.appendChild(totalMoney);
+
+                const orderNumber = document.createElement("div");
+                orderNumber.className = "order-number";
+                orderNumber.innerHTML = "ID " + current_orderID;
+                orderElement.appendChild(orderNumber);
+
+                const blank = document.createElement("div");
+                blank.className = "blank";
+                orderElement.appendChild(blank);
+
+
+
+        }
     }
 
     modalRender = function(text, type, input1, input2, input3) {
@@ -233,6 +288,7 @@ const main = () => {
                 window.localStorage.setItem("userOrders", JSON.stringify(result.user.orders));
                 current_email = result.user.email;
                 render(result.user);
+                renderOrders(result.user.orders);
             } else if(result.type == "error") {
                 console.log(result.message);
                 window.localStorage.setItem("auth",JSON.stringify({accessToken: ""}));

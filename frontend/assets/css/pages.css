@@ -315,6 +315,26 @@ body, html {
   height: 15px;
 }
 
+/*
+** CHI SIAMO
+**
+*/
+
+.chisiamo-container {
+  display: flex;
+}
+
+.chisiamo-container .chisiamo {
+  flex: 1000px 1;
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.chisiamo-container .blank3 {
+  flex: 1;
+}
+
 
 /*
 ** MEDIA QUERY BREAKPOINTS

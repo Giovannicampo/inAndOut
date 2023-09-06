@@ -5,6 +5,8 @@ const main = () => {
     let container = document.getElementById("product-container");
     let cards = [];
     let main_container;
+    let userOn = false;
+    let cart = [];
 
      // on click of card
      product_details = function (product) {
@@ -58,7 +60,7 @@ const main = () => {
                     // prod price
                     const prod_price = document.createElement("p");
                     prod_price.setAttribute("id", "prod-price");
-                    prod_price.innerHTML = product.price;
+                    prod_price.innerHTML = "€" + product.price;
                     text.appendChild(prod_price);
 
                 // blank
@@ -144,10 +146,6 @@ const main = () => {
 
                         // event button save to cart
                         cart_button.addEventListener("click", () => {
-                            let cart = JSON.parse(window.localStorage.getItem("cart"));
-                            if(cart == null) {
-                                cart = [];
-                            }
                             const current_product = {
                                 name: product.name,
                                 cart_quantity: selection.value,
@@ -163,8 +161,23 @@ const main = () => {
                                     var sum = Number.parseInt(p.cart_quantity) + Number.parseInt(current_product.cart_quantity);
                                     if(sum <= 10) {
                                         p.cart_quantity = JSON.stringify(sum);
-                                        window.localStorage.setItem("cart", JSON.stringify(cart));
-                                        console.log(JSON.parse(window.localStorage.getItem("cart")));
+                                        if(userOn) {
+                                            window.localStorage.setItem("userCart", JSON.stringify(cart));
+                                            console.log(JSON.parse(window.localStorage.getItem("userCart")));
+                                            fetch("http://localhost:3000/api/auth/protected/update", {
+                                            method: "PATCH",
+                                            headers: {
+                                                "Authorization": `Bearer ${auth.accessToken}`,
+                                                "Content-type": "application/json; charset=UTF-8"
+                                            },
+                                            body: JSON.stringify({cart: cart})
+                                            })
+                                            .then(response => response.json())
+                                            .then(result => {console.log(result.type);})
+                                        } else {
+                                            window.localStorage.setItem("cart", JSON.stringify(cart));
+                                            console.log(JSON.parse(window.localStorage.getItem("cart")));
+                                        }
                                         blank3.innerHTML = `Prodotto inserito correttamente nel carrello <br> ${current_product.name} - ${sum} pcs`;
                                     }
                                     else {
@@ -174,8 +187,23 @@ const main = () => {
                                 }
                             }
                             cart.push(current_product);
-                            window.localStorage.setItem("cart", JSON.stringify(cart));
-                            console.log(JSON.parse(window.localStorage.getItem("cart")));
+                            if(userOn) {
+                                window.localStorage.setItem("userCart", JSON.stringify(cart));
+                                console.log(JSON.parse(window.localStorage.getItem("userCart")));
+                                fetch("http://localhost:3000/api/auth/protected/update", {
+                                method: "PATCH",
+                                headers: {
+                                    "Authorization": `Bearer ${auth.accessToken}`,
+                                    "Content-type": "application/json; charset=UTF-8"
+                                },
+                                body: JSON.stringify({cart: cart})
+                                })
+                                .then(response => response.json())
+                                .then(result => {console.log(result.type);})
+                            } else {
+                                window.localStorage.setItem("cart", JSON.stringify(cart));
+                                console.log(JSON.parse(window.localStorage.getItem("cart")));
+                            }
                             blank3.innerHTML = `Prodotto inserito correttamente nel carrello <br> ${current_product.name} - ${current_product.cart_quantity} pcs`;
                         })
                 }
@@ -417,6 +445,10 @@ const main = () => {
         .then( result => render(result));
     }
 
+    init_cart = function(_cart) {
+        cart = _cart;
+    }
+
     init();
     setEvents();
 
@@ -430,6 +462,33 @@ const main = () => {
         signButton.innerHTML = "Sign up";
         signButton.setAttribute("href", "signup.html");
     }
+
+    cart = JSON.parse(window.localStorage.getItem("cart"));
+
+    if(auth.accessToken !== "") {
+        fetch("http://localhost:3000/api/auth/protected", {
+            headers: {
+                "Authorization": `Bearer ${auth.accessToken}`
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.type == "success") {
+                userOn = true;
+                console.log("user is on");
+                const user_cart = JSON.parse(window.localStorage.getItem("userCart"));
+                if(user_cart == []) {
+                    return;
+                }
+                window.localStorage.setItem("cart",JSON.stringify([]));
+                init_cart(user_cart);
+            }
+        })
+    }
+    // if(cart == null) {
+    //     cart = [];
+    // }
+    // console.log(cart.userCart);
 }
 
 window.onload = () => { main(); }

@@ -2,16 +2,17 @@ const main = () => {
 
     let cartContainer = document.getElementsByClassName("cart-container")[0];
     let blankSpace = document.getElementsByClassName("blank-space")[0];
+    let cart = [];
+    let userOn = false;
 
-    updateSumUpData = function () {
+    updateSumUpData = function (_cart = cart) {
         // sum up data
         const sumUpData = document.getElementById("sum-up-data");
-        const cart = JSON.parse(window.localStorage.getItem("cart"));
         var tot_money = 0;
-        for(var i=0; i<cart.length; i++) {
-            tot_money += cart[i].price * cart[i].cart_quantity;
+        for(var i=0; i<_cart.length; i++) {
+            tot_money += _cart[i].price * _cart[i].cart_quantity;
         }
-        sumUpData.innerHTML = `Totale ${tot_money.toFixed(2)};`
+        sumUpData.innerHTML = `Totale €${tot_money.toFixed(2)}`;
     }
 
     render = function (product) {
@@ -45,7 +46,7 @@ const main = () => {
             // price
             const price = document.createElement("div");
             price.setAttribute("id", "price");
-            price.innerHTML = product.price;
+            price.innerHTML = "€" + product.price;
             cartProduct.appendChild(price);
 
             // quantity
@@ -69,7 +70,6 @@ const main = () => {
                 select.addEventListener("click", () => {
                     product.cart_quantity = select.value;
                     span.innerHTML = `qty: ${select.value}&nbsp;`;
-                    const cart = JSON.parse(window.localStorage.getItem("cart"));
                     const new_cart = [];
                     for(var i=0; i<cart.length; i++) {
                         if(cart[i].name == product.name) {
@@ -77,9 +77,24 @@ const main = () => {
                         }
                         new_cart.push(cart[i]);
                     }
-                    window.localStorage.setItem("cart", JSON.stringify(new_cart));
-                    console.log(window.localStorage.getItem("cart"));
-                    updateSumUpData();
+                    if(userOn) {
+                        window.localStorage.setItem("userCart", JSON.stringify(new_cart));
+                        console.log(JSON.parse(window.localStorage.getItem("userCart")));
+                        fetch("http://localhost:3000/api/auth/protected/update", {
+                        method: "PATCH",
+                        headers: {
+                            "Authorization": `Bearer ${auth.accessToken}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                        body: JSON.stringify({cart: new_cart})
+                        })
+                        .then(response => response.json())
+                        .then(result => {console.log(result.type);})
+                    } else {
+                        window.localStorage.setItem("cart", JSON.stringify(new_cart));
+                        console.log(JSON.parse(window.localStorage.getItem("cart")));
+                    }
+                    updateSumUpData(new_cart);
                 })
 
                     // option
@@ -100,7 +115,6 @@ const main = () => {
 
             X.addEventListener("click", () => {
                 cartContainer.removeChild(cartProduct);
-                const cart = JSON.parse(window.localStorage.getItem("cart"));
                 const new_cart = [];
                 for(var i=0; i<cart.length; i++) {
                     if(cart[i].name == product.name) {
@@ -108,9 +122,25 @@ const main = () => {
                     }
                     new_cart.push(cart[i]);
                 }
-                window.localStorage.setItem("cart", JSON.stringify(new_cart));
-                console.log(window.localStorage.getItem("cart"));
-                updateSumUpData();
+
+                if(userOn) {
+                    window.localStorage.setItem("userCart", JSON.stringify(new_cart));
+                    console.log(JSON.parse(window.localStorage.getItem("userCart")));
+                    fetch("http://localhost:3000/api/auth/protected/update", {
+                    method: "PATCH",
+                    headers: {
+                        "Authorization": `Bearer ${auth.accessToken}`,
+                        "Content-type": "application/json; charset=UTF-8"
+                    },
+                    body: JSON.stringify({cart: new_cart})
+                    })
+                    .then(response => response.json())
+                    .then(result => {console.log(result.type);})
+                } else {
+                    window.localStorage.setItem("cart", JSON.stringify(new_cart));
+                    console.log(JSON.parse(window.localStorage.getItem("cart")));
+                }
+                updateSumUpData(new_cart);
             })
 
             // blank
@@ -134,8 +164,41 @@ const main = () => {
         paymentButton.setAttribute("href", "signup.html");
     }
 
+    init_cart = function(_cart) {
+        cart = _cart;
+    }
+
     init = function () {
-        let cart = JSON.parse(window.localStorage.getItem("cart"));
+        const auth = JSON.parse(window.localStorage.getItem("auth"));
+        cart = JSON.parse(window.localStorage.getItem("cart"));
+
+        if(auth.accessToken !== "") {
+            fetch("http://localhost:3000/api/auth/protected", {
+                headers: {
+                    "Authorization": `Bearer ${auth.accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if(result.type == "success") {
+                    userOn = true;
+                    console.log("user is on");
+                    const user_cart = JSON.parse(window.localStorage.getItem("userCart"));
+                    cart = user_cart;
+
+                    console.log(cart);
+                    if (cart.length > 0) {
+                        cartContainer.removeChild(blankSpace);
+                    }
+                    if(cart != []) {
+                        for(var i=0; i<cart.length; i++) {
+                            const current_product = cart[i];
+                            render(current_product);
+                        }
+                    }
+                }
+            })
+        }
         console.log(cart);
         if (cart.length > 0) {
             cartContainer.removeChild(blankSpace);
