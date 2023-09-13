@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/product');
+const {allowLogged, allowAdmin} = require("../middlewares/users");
 
 const router = express.Router();
 
@@ -100,7 +101,7 @@ router.get('/getByCategory/:main/:category', async (req, res) => {
 
 
 //Update by ID Method
-router.patch('/update/:id', async (req, res) => {
+router.patch('/update/:id', allowLogged, allowAdmin, async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -118,7 +119,7 @@ router.patch('/update/:id', async (req, res) => {
 })
 
 //Delete by ID Method
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', allowLogged, allowAdmin, async (req, res) => {
     try {
         const id = req.params.id;
         const data = await Product.findByIdAndDelete(id)

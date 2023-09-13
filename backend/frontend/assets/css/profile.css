@@ -1,0 +1,157 @@
+#profile-name {
+    color: white;
+    font-size: 7rem;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container .profile-info {
+    flex: 5;
+    color: #fff;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.container .image {
+    flex: auto;
+}
+
+.container .image img {
+    height: 500px;
+}
+
+.container .blank {
+    flex: 1;
+}
+
+.order #order-title {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.order .order-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.order .order-container .order-element {
+    flex: 200px 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.order .order-container .order-element .date {
+    flex: 2;
+    font-size: 28px;
+    color: #fff;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .totalmoney {
+    flex: 2;
+    font-size: 2rem;
+    color: #fff;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .order-number {
+    flex: 2;
+    font-size: 2rem;
+    color: #fff;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .blank {
+    flex: 1;
+    color: #fff;
+}
+
+#address-data {
+    font-size: 28px;
+    color: #517965;
+}
+
+#payment-data {
+    font-size: 28px;
+    color: #517965;
+}
+
+#change-email:hover, #change-password:hover, #change-address:hover, #change-payment:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.success {
+    position: fixed;
+    font-size: 4rem;
+    height: 500px;
+    width: 700px;
+    border: 2px solid #517965;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.x-button {
+    text-align: right;
+    font-size: 3rem;
+    height: 100px;
+}
+
+.x-button span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.message {
+    text-align: center;
+    font-size: 25px;
+    color: #517965;
+}
+
+.link {
+    text-align: center;
+    font-size: 2rem;
+    color: #517965;
+}
+
+.link span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.input-modal {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #517965;
+    font-size: 22px;
+    background-color: transparent;
+    color: #517965;
+    text-align: center;
+}
+
+.button-modal {
+    width: 20%;
+    background-color: #517965;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    /* border: 2px solid #eaeaea; */
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+.button-modal:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}

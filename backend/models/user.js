@@ -9,8 +9,6 @@ const user = new mongoose.Schema({
         required: true,
         type: String
     },
-    cart: [],
-    orders: [],
     deliveryInfo: {
         address: {
             required: false,
@@ -47,6 +45,10 @@ const user = new mongoose.Schema({
     password: {
         required: true,
         type: String
+    },
+    level: {
+        type: String,
+        default: "user"
     },
     verified: {
         type: Boolean,

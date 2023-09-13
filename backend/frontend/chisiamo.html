@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi siamo</title>
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+    <div class="header white-text">
+        <div class="title">&nbsp &nbsp In&Out</div>
+        <div class="logo">
+            <a class="height-inherit" href="index.html">
+                <img src="assets/pics/header_logo.png" alt="logo not found">
+            </a>
+        </div>
+        <div class="contatti">
+            <span> <a class="white-text no-line" href="outdoor.html">Outdoor</a> </span>
+            <span> <a class="white-text no-line" href="prodotti.html">Prodotti</a></span>
+            <span> <a class="white-text no-line" href="carrello.html">Carrello</a> </span>
+            <span> <a class="white-text no-line" href="signup.html" id="sign">Sign up</a> </span>
+        </div>
+    </div>
+
+    <div class="title margin-top-100px">
+        <div class="text">
+            CHI SIAMO
+        </div>
+        <img src="assets/pics/frame/frame1.png" alt="picture not found">
+            <!-- <img class="p2" src="assets/pics/frame/dry-clean.png" alt=""> -->
+    </div>
+
+    <div class="chisiamo-container margin-top-200px">
+        <div class="blank3"></div>
+        <div class="chisiamo">
+            in&out nasce dalla passione di due artigiani dell'interior design che hanno
+            deciso di mettersi in proprio. La sfida sta nel proporre i nostri prodotti innovativi
+            in ogni ambiente e per ogni esigenza ogni nostro cliente possa avere.
+            <br><br><br>
+            Abbiamo preparato due vetrine, una indoor e una outdoor per mostrare come i nostri prodotti
+            riescano a rivoluzionare la vostra casa, con prezzi fuori dal mercato, senza rinunciare
+            a comfort e qualità.
+            <br><br><br>
+            Vi aspettiamo!
+        </div>
+        <div class="blank3"></div>
+    </div>
+
+    <div class="footer abel margin-top-100px">
+
+        <div class="logo">
+            <a class="height-inherit" href="index.html">
+                <img src="assets/pics/header_logo.png" alt="logo not found">
+            </a>
+        </div>
+        <div class="info white-text">
+            Via Francesco Crispi, 14 (CT) <br> +39 095 725392 <br> in&outdesignstudio@gmail.com
+        </div>
+        <div class="menu white-text">
+            <div>
+                <a class="white-text no-line abel" href="chisiamo.html">
+                    Chi siamo
+                </a>
+            </div>
+            <div class="blank"></div>
+            <div>
+                <a class="white-text no-line abel" href="carrello.html">
+                    Carrello
+                </a>
+            </div>
+        </div>
+        <div class="menu white-text">
+            <div>
+                <a class="white-text no-line abel" href="prodotti.html">
+                    I nostri prodotti
+                </a>
+            </div>
+            <div class="blank"></div>
+            <div>Newsletter</div>
+        </div>
+        <div class="menu white-text">
+            <div>
+                <a class="white-text no-line abel" href="indoor.html">
+                    Indoor
+                </a>
+            </div>
+            <div class="blank"></div>
+            <div>
+                <a class="white-text no-line abel" href="outdoor.html">
+                    Outdoor
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let signButton = document.getElementById("sign");
+
+        fetch("http://localhost:3000/api/auth/me")
+        .then(response => response.json())
+        .then(result => {
+            if(result.type == "success") {
+                signButton.innerHTML = `${result.user.name} 👤`;
+                signButton.setAttribute("href", "profile.html");
+            }
+        })
+        .catch(err => {
+            signButton.innerHTML = "Sign up";
+            signButton.setAttribute("href", "signup.html");
+        })
+    </script>
+    
+</body>
+</html>
