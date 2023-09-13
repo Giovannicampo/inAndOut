@@ -6,7 +6,7 @@
 
 ## Introduction
 
-*in&out* is an e-commerce of two interior designers that had decided to join together and show their products and works within the environments they were thought for.
+*in&out* is an e-commerce of two interior designers that decided to join together and show their products and works within the environments they were thought for.
 
 Users can easily navigate through the site, take a look at the **indoor** and **outdoor** sections and appreciate the style and the colors of the products within their designed place.
 
