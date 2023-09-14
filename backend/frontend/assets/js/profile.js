@@ -110,7 +110,9 @@ const main = () => {
                 blank.className = "blank";
                 orderElement.appendChild(blank);
 
-
+            orderElement.addEventListener("click", () => {
+                // render a new page where there are all order details
+            })
 
         }
     }

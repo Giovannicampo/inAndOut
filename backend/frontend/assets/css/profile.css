@@ -47,6 +47,11 @@
     justify-content: space-around;
 }
 
+.order .order-container .order-element:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
 .order .order-container .order-element .date {
     flex: 2;
     font-size: 28px;
