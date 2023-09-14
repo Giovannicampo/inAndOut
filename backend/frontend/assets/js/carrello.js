@@ -6,7 +6,7 @@ const main = () => {
     let userOn = false;
     let userID = "";
 
-    updateSumUpData = function (_cart = cart) {
+    updateSumUpData = function (_cart) {
         // sum up data
         const sumUpData = document.getElementById("sum-up-data");
         var tot_money = 0;
@@ -149,7 +149,7 @@ const main = () => {
                     })
                 } else {
                     window.localStorage.setItem("cart", JSON.stringify(new_cart));
-                    console.log(JSON.parse(window.localStorage.getItem("cart")));
+                    updateSumUpData(new_cart);
                 }
             })
 
@@ -159,7 +159,7 @@ const main = () => {
             cartProduct.appendChild(blank);
 
             // update money
-            updateSumUpData();
+            updateSumUpData(cart);
     }
 
     init_cart = function(_cart) {
@@ -170,41 +170,59 @@ const main = () => {
         userID = id;
     }
 
+    setUserOn = function (flag) {
+        userOn = flag;
+    }
+
     init = function () {
         const paymentButton = document.getElementById("payment-button");
         cart = JSON.parse(localStorage.getItem("cart"));
+        // console.log(cart);
 
         fetch("http://localhost:3000/api/auth/me")
         .then(response => response.json())
         .then(result => {
             if(result.type == "success") {
+                setUserOn(true);
                 paymentButton.setAttribute("href", "payment.html");
-                userOn = true;
                 setUserID(result.user._id);
                 console.log("user is on");
                 fetch(`http://localhost:3000/api/cart/getByUserID/${result.user._id}`)
                 .then(_response => _response.json())
                 .then(_result => {
-                    init_cart(_result[0].products);
-                    cart = _result[0].products;
+                    const cartID = _result[0]._id;
+                    
+                    if(_result[0].products.length < 1 && cart.length > 0) {
+                        fetch(`http://localhost:3000/api/cart/update/${cartID}`, {
+                            method: "PATCH",
+                            headers: {
+                                "Content-type": "application/json; charset=UTF-8"
+                            },
+                            body: JSON.stringify({ products: cart})
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            console.log(result);
+                            localStorage.setItem("cart", JSON.stringify([]));
+                        })
+                    } else {
+                        init_cart(_result[0].products);
+                        cart = _result[0].products;
+                    }
+                    
                     console.log(cart);
                     if (cart.length > 0) {
                         cartContainer.removeChild(blankSpace);
-                    }
-                    if(cart != []) {
                         for(var i=0; i<cart.length; i++) {
                             const current_product = cart[i];
                             render(current_product);
                         }
                     }
                 });
-            }
-            else {
-                console.log(cart);
+            } else {
+                paymentButton.setAttribute("href", "signup.html");
                 if (cart.length > 0) {
                     cartContainer.removeChild(blankSpace);
-                }
-                if(cart != []) {
                     for(var i=0; i<cart.length; i++) {
                         const current_product = cart[i];
                         render(current_product);
@@ -212,7 +230,8 @@ const main = () => {
                 }
             }
         })
-        }
+
+    }
 
     init();
 

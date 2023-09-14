@@ -3,7 +3,12 @@ const allowLogged = (req, res, next) => {
         if(req.session && req.session.user) {
             console.log("va bene");
             next();
-        } 
+        } else {
+            return res.status(401).send({
+                message: "There is no session or user on!",
+                type: "error"
+            })
+        }
     }
     catch (error) {
         return res.status(500).send({
@@ -19,10 +24,17 @@ const allowAdmin = (req, res, next) => {
         if(req.session && req.session.user && 
             req.session.level == "admin") {
             next();
+        } else {
+            return res.status(401).send({
+                message: "There is no session or user on!",
+                type: "error"
+            })
         }
+
     } catch (error) {
         return res.status(500).send({
-            message: "User not allowed!"
+            message: "User not allowed!",
+            type: "error"
         })
     }
 }
