@@ -61,10 +61,106 @@ const main = () => {
     render = function(user) {
         console.log(user);
 
-        nomeCognome.innerHTML = `&nbsp;&nbsp;${user.name} ${user.surname}`;
+        nomeCognome.innerHTML = `${user.name} ${user.surname}`;
         email.innerHTML = user.email;
         address.innerHTML = `${user.deliveryInfo.address} ${user.deliveryInfo.postalCode} ${user.deliveryInfo.country}`;
         payment.innerHTML = `${user.paymentCard.numberCard}`;
+    }
+
+    renderCurrentOrder = function (order) {
+        const container = document.getElementsByClassName("container")[0];
+
+        const detailsContainer = document.createElement("div");
+        detailsContainer.style.top = `${window.innerHeight/2 - 500}px`;
+        detailsContainer.style.left = `${window.innerWidth/2 - 650}px`;
+        if(window.innerWidth <= 1296) {
+            detailsContainer.style.top = `${window.innerHeight/2 - 250}px`;
+            detailsContainer.style.left = `${window.innerWidth/2 - 325}px`;
+        }
+        if(window.innerWidth <= 800) {
+            detailsContainer.style.top = `${window.innerHeight/2 - 216}px`;
+            detailsContainer.style.left = `${window.innerWidth/2 - 221}px`;
+        }
+        detailsContainer.className = "details-container";
+        container.appendChild(detailsContainer);
+
+        const firstRow = document.createElement("div");
+        firstRow.className = "first-row";
+        detailsContainer.appendChild(firstRow);
+
+        const title = document.createElement("div");
+        title.innerHTML = `Dettagli dell'ordine #${order.orderID}`;
+        title.className = "title";
+        firstRow.appendChild(title);
+
+        const X = document.createElement("div");
+        X.className = "X";
+        firstRow.appendChild(X);
+
+        const _x = document.createElement("span");
+        _x.innerHTML = "x &nbsp;&nbsp;";
+        X.appendChild(_x);
+
+        X.addEventListener("click", () => {
+            container.removeChild(detailsContainer);
+        })
+
+        const secondRow = document.createElement("div");
+        secondRow.className = "second-row";
+        detailsContainer.appendChild(secondRow);
+
+        const info = document.createElement("div");
+        info.className = "info";
+        secondRow.appendChild(info);
+
+        const date = document.createElement("p");
+        date.innerHTML = order.date;
+        info.appendChild(date);
+
+        const price = document.createElement("p");
+        price.innerHTML = "€" + order.totalCost;
+        info.appendChild(price);
+
+        const state = document.createElement("p");
+        state.innerHTML = order.state;
+        info.appendChild(state);
+
+        if(order.state == "in corso") {
+            state.style.color = "orange";
+        }
+
+        const products = document.createElement("div");
+        products.className = "products";
+        secondRow.appendChild(products);
+
+        for(var i=0; i<order.products.length; i++) {
+            const row = document.createElement("div");
+            row.className = "row";
+            products.appendChild(row);
+
+            const image_div = document.createElement("div");
+            image_div.className = "image";
+            row.appendChild(image_div);
+
+            const image = document.createElement("img");
+            image.setAttribute("src",order.products[i].image);
+            image_div.appendChild(image);
+
+            const prod_name = document.createElement("p");
+            prod_name.className = "name";
+            prod_name.innerHTML = order.products[i].name;
+            row.appendChild(prod_name);
+
+            const quantity = document.createElement("p");
+            quantity.className = "quantity";
+            quantity.innerHTML = "qty " + order.products[i].cart_quantity;
+            row.appendChild(quantity);
+
+            const prod_price = document.createElement("p");
+            prod_price.className = "price";
+            prod_price.innerHTML = "€" + (order.products[i].price * order.products[i].cart_quantity);
+            row.appendChild(prod_price);
+        }
     }
 
     renderOrders = function(orders) {
@@ -98,20 +194,25 @@ const main = () => {
 
                 const orderNumber = document.createElement("div");
                 orderNumber.className = "order-number";
-                orderNumber.innerHTML = "ID " + current_orderID;
+                orderNumber.innerHTML = "ID #" + current_orderID;
                 orderElement.appendChild(orderNumber);
 
+                let color_state;
+                switch(current_state) {
+                    case "in corso":
+                        color_state = "state-in-corso";
+                        break;
+                    default:
+                        color_state = "state-done";
+                        break;
+                }
                 const orderState = document.createElement("div");
-                orderState.className = "order-number";
+                orderState.className = color_state;
                 orderState.innerHTML = current_state;
                 orderElement.appendChild(orderState);
 
-                const blank = document.createElement("div");
-                blank.className = "blank";
-                orderElement.appendChild(blank);
-
             orderElement.addEventListener("click", () => {
-                // render a new page where there are all order details
+                renderCurrentOrder(current_order);
             })
 
         }
@@ -122,7 +223,11 @@ const main = () => {
         const success = document.createElement("div");
         success.className = "success";
         success.style.top = `${(window.innerHeight/2) - 150}px`;
-        success.style.left = `${(window.innerWidth/2) - 250}px`;
+        success.style.left = `${(window.innerWidth/2) - 350}px`;
+        if(window.innerWidth <= 985) {
+            success.style.top = `${(window.innerHeight/2) - 166}px`;
+            success.style.left = `${(window.innerWidth/2) - 233}px`;
+        }
         console.log((window.innerWidth/2) - 250);
         modal.appendChild(success);
 
@@ -228,9 +333,9 @@ const main = () => {
                 break;
 
                 case `Password`:
-                if(input_2.value !== input_1.value) return;
+                if(input_2.value !== input_3.value) return;
                 const _password = {
-                    oldpassword: input_2.value,
+                    oldpassword: input_1.value,
                     newpassword: input_3.value
                 }
                 updatePassword(_password);
@@ -258,16 +363,24 @@ const main = () => {
 
         changePassword.addEventListener("click", () => {
             modalRender("Inserisci nuova password",
-                        "Password", "Inserisci vecchia password", "Inserisci di nuovo vecchia password", "Inserisci nuova password");
+                        "Password", "Inserisci vecchia password", "Inserisci nuova password", "Inserisci nuova password");
         })
 
         signOut.addEventListener("click", () => {
             fetch("http://localhost:3000/api/auth/logout", {
-                method: "POST"
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify({})
             })
             .then(result => result.json())
-            .then(response => console.log(response))
-            window.location.href = "signin.html";
+            .then(response => {
+                console.log(response)
+                if(response.type == "success")
+                    window.location.href = "signin.html";
+            })
+            // window.location.href = "signin.html";
         })
     }
 

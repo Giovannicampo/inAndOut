@@ -111,11 +111,66 @@ router.post("/signin", async (req, res) => {
     }
 });
 
+// Sign In request
+router.post("/signin/admin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // console.log(email,password);
+    // 1. check if user exists
+    const user = await User.findOne({ email: email});
+
+    // if user doesn't exist, return error
+    if (!user)
+      return res.status(500).json({
+        message: "L'utente non esiste! 😢",
+        type: "error",
+      });
+    // 2. if user exists, check if password is correct
+    const isMatch = await compare(password, user.password);
+
+    // if password is incorrect, return error
+    if (!isMatch)
+      return res.status(500).json({
+        message: "La password non è corretta! ⚠️",
+        type: "error",
+      });
+    await user.save();
+
+    if(user.level !== "admin")
+      return res.status(401).json({
+        message: "Accesso consentito solo agli admin! ⚠️",
+        type: "error",
+      });
+
+    req.session.user = user;
+    session = req.session;
+    req.session.save(); 
+
+    // console.log(req.session);
+
+    res.status(200).send({
+      type: "success",
+      message: "User correctly logged in!",
+      session: session
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      type: "error",
+      message: "Error signing in!",
+      error,
+    });
+  }
+});
+
 // Sign Out request
 router.post("/logout", (req, res) => {
     // clear cookies
     req.session.destroy();
-    res.redirect('/');
+    // res.redirect('signin.html');
+    res.status(200).json({
+      type: "success"
+    })
 });
 
 // protected route

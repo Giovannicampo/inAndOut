@@ -12,8 +12,21 @@
 .cart-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    /* border: 1px solid yellow; */
+    width: 90%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.cart-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.cart-container::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+    background: #517965
 }
 
 .cart-container .cart-product {
@@ -24,6 +37,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-top: 15px;
+    background-color: #51796538;
 }
 
 .cart-container .cart-product div{

@@ -1,7 +1,6 @@
 const main = () => {
 
     let cartContainer = document.getElementsByClassName("cart-container")[0];
-    let blankSpace = document.getElementsByClassName("blank-space")[0];
     let cart = [];
     let userOn = false;
     let userID = "";
@@ -176,6 +175,9 @@ const main = () => {
 
     init = function () {
         const paymentButton = document.getElementById("payment-button");
+        if(JSON.parse(localStorage.getItem("cart")) == null) {
+            localStorage.setItem("cart", JSON.stringify([]));
+        }
         cart = JSON.parse(localStorage.getItem("cart"));
         // console.log(cart);
 
@@ -212,7 +214,6 @@ const main = () => {
                     
                     console.log(cart);
                     if (cart.length > 0) {
-                        cartContainer.removeChild(blankSpace);
                         for(var i=0; i<cart.length; i++) {
                             const current_product = cart[i];
                             render(current_product);
@@ -222,7 +223,6 @@ const main = () => {
             } else {
                 paymentButton.setAttribute("href", "signup.html");
                 if (cart.length > 0) {
-                    cartContainer.removeChild(blankSpace);
                     for(var i=0; i<cart.length; i++) {
                         const current_product = cart[i];
                         render(current_product);

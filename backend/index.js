@@ -40,7 +40,7 @@ app.use(session({
     secret: 'my secret',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    cookie: { secure: false, sameSite: "none" },
     store: store
   }));
 
@@ -49,6 +49,10 @@ app.use('/api/product', productRouter);
 app.use(`/api/auth`, authRouter);
 app.use(`/api/cart`, cartRouter);
 app.use(`/api/order`, orderRouter);
+
+app.get(`/adminhandler`, (req, res) => {
+  res.redirect(`admin.html`);
+})
 
 app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)

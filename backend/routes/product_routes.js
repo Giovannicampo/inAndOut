@@ -4,22 +4,29 @@ const {allowLogged, allowAdmin} = require("../middlewares/users");
 
 const router = express.Router();
 
-router.post('/post', async (req, res) => {
+router.post('/post', allowLogged, allowAdmin, async (req, res) => {
     const product_data = new Product({
         name: req.body.name,
         maincategory: req.body.maincategory,
         category: req.body.category,
         quantity: req.body.quantity,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        price: req.body.price
     })
 
     try {
         const dataToSave = await product_data.save();
-        res.status(200).json(dataToSave)
+        res.status(200).json({
+            product: dataToSave,
+            type: "success"
+        })
     }
     catch (error) {
-        res.status(400).json({message: error.message})
+        res.status(400).json({
+            type: "error",
+            message: error.message
+        })
     }
 })
 
@@ -111,7 +118,11 @@ router.patch('/update/:id', allowLogged, allowAdmin, async (req, res) => {
             id, updatedData, options
         )
 
-        res.send(result)
+        res.status(200).json({
+            type: "success",
+            message: "successfully updated!",
+            product: result
+        })
     }
     catch (error) {
         res.status(400).json({ message: error.message })
@@ -123,7 +134,10 @@ router.delete('/delete/:id', allowLogged, allowAdmin, async (req, res) => {
     try {
         const id = req.params.id;
         const data = await Product.findByIdAndDelete(id)
-        res.send(`Document with ${data.name} has been deleted..`)
+        res.status(200).json({
+            type: "success",
+            message: "product successfully deleted!"
+        })
     }
     catch (error) {
         res.status(400).json({ message: error.message })

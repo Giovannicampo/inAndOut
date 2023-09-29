@@ -22,7 +22,7 @@ const allowLogged = (req, res, next) => {
 const allowAdmin = (req, res, next) => {
     try{
         if(req.session && req.session.user && 
-            req.session.level == "admin") {
+            req.session.user.level == "admin") {
             next();
         } else {
             return res.status(401).send({

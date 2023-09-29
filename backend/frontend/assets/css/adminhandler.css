@@ -1,0 +1,330 @@
+/*
+** ADMIN STYLESHEET
+**
+*/
+
+.border-right {
+    border-right: 1px solid #517965;
+}
+
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cards-container>.card {
+    flex: 1;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container>.card:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.cards-container>.card p {
+    color: #fff;
+    font-size: 3rem;
+    flex: 1;
+    text-align: center;
+}
+
+.cards-container>.card .image {
+    flex: 1;
+    text-align: center;
+}
+
+.cards-container>.card .image img{
+    height: 400px;
+    width: 500px;
+}
+
+/*
+** PRODUCTS PAGES 
+**
+*/
+
+.prod-title {
+    color: #fff;
+    font-size: 4rem;
+    margin-left: 30px;
+}
+
+.product-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-row>.all-products {
+    flex: 1;
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-right: 20px;
+    flex-wrap: nowrap;
+}
+
+.product-row>.all-products::-webkit-scrollbar {
+    width: 10px;
+}
+
+.product-row>.all-products::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.product-row>.all-products::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.product-row>.all-products .row{
+    flex: 1;
+    margin-top: 20px;
+    display: flex;
+    height: auto;
+}
+
+.product-row>.all-products .row:hover {
+    cursor: pointer;
+    background-color: #51796576;
+}
+
+.product-row>.all-products .row .image{
+    flex: 1;
+    height: 200px;
+}
+
+.product-row>.all-products .row .image img{
+    width: 200px;
+    height: 200px;
+}
+
+.product-row>.all-products .row .name{
+    flex: 1;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.product-row>.all-products .row .remX {
+    flex: 1;
+    align-self: center;
+    text-align: center;
+}
+
+.product-row>.all-products .row .remX span {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.product-row>.all-products .row .remX span:hover {
+    color: red;
+}
+
+.product-row>.product {
+    flex: 1;
+    color: #fff;
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: scroll;
+    flex-wrap: nowrap;
+}
+
+.product-row>.product::-webkit-scrollbar {
+    margin-left: 5px;
+    width: 5px;
+}
+
+.product-row>.product::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.product-row>.product::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.product-row>.product .name {
+    flex: 1;
+    font-size: 4rem;
+}
+
+.product-row>.product .image {
+    flex: 1;
+}
+
+.product-row>.product .image img{
+    border: 1px solid #fff;
+    height: 500px;
+    width: 500px;
+}
+
+.product-row>.product .maincategory {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.product-row>.product .category {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.product-row>.product .quantity {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.product-row>.product .price {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.product-row>.product .description {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.product-row>.menu {
+    flex: 1;
+    height: 800px;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.product-row>.menu span:hover {
+    cursor: pointer;
+    color: #517965;
+}
+
+.product-row>.menu .addBanner {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #517965;
+    text-align: center;
+    width: inherit;
+    height: 700px;
+}
+
+.product-row>.menu .addBanner .addX {
+    flex: 1;
+    text-align: right;
+}
+
+.product-row>.menu .addBanner .addX span {
+    color: #fff;
+    font-size: 4rem;
+    margin-right: 40px;
+}
+
+.product-row>.menu .addBanner .addX span:hover {
+    color: #517965;
+    cursor: pointer;
+}
+
+.product-row>.menu .addBanner .inputdiv {
+    margin-top: 10px;
+    flex: 1;
+}
+
+.product-row>.menu .addBanner input {
+    outline: none;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid #517965;
+    font-size: 28px;
+    background-color: #000;
+    color: #fff;
+}
+
+.product-row>.menu .addBanner button {
+    border: 2px solid #517965;
+    text-align: center;
+    font-size: 40px;
+    width: 120px;
+    background-color: #000;
+    color: #fff;
+}
+
+.product-row>.menu .addBanner button:hover {
+    border: 2px solid #fff;
+    background-color: #517965;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*
+** USERS PAGE
+**
+*/
+
+.user-title {
+    color: #fff;
+    font-size: 4rem;
+    margin-left: 30px;
+}
+
+.users-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.users-row>.all-users {
+    flex: 1;
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-right: 20px;
+    flex-wrap: nowrap;
+}
+
+.users-row>.all-users::-webkit-scrollbar {
+    width: 10px;
+}
+
+.users-row>.all-users::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.users-row>.all-users::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.users-row>.all-users .row{
+    flex: 1;
+    margin-top: 20px;
+    display: flex;
+    height: auto;
+}
+
+.users-row>.all-users .row:hover {
+    cursor: pointer;
+    background-color: #51796576;
+}
+
+.users-row>.all-users .row .image{
+    flex: 1;
+    height: 200px;
+}
+
+.users-row>.all-users .row .image img{
+    width: 200px;
+    height: 200px;
+}
+
+.users-row>.all-users .row .name{
+    flex: 1;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}

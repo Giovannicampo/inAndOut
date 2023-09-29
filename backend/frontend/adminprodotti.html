@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>in&out - AdminHandler Prodotti</title>
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/adminhandler.css">
+</head>
+<body>
+
+    <div class="header white-text">
+        <div class="title">&nbsp &nbsp In&Out</div>
+        <div class="logo">
+            <a class="height-inherit" href="index.html">
+                <img src="assets/pics/header_logo.png" alt="logo not found">
+            </a>
+        </div>
+        <div class="contatti">
+            <span></span>
+            <span> <a class="white-text no-line" href="adminhandler.html">AdminHandler</a> </span>
+            <span> <a class="white-text no-line" href="admin.html">Sign Out</a> </span>
+        </div>
+    </div>
+
+    <span class="prod-title">Prodotti</span>
+
+    <div class="product-row margin-top-100px" id="main-container">
+        <div class="all-products">
+
+        </div>
+        <div class="product">
+            <div class="name" id="prodname">Nome prodotto</div>
+            <div class="image">
+                <img src="assets/pics/notfound.jpg" alt="immagine prodotto" id="prodimage">
+            </div>
+            <div class="maincategory" id="prodmaincat">categoria principale</div>
+            <div class="category" id="prodcat">categoria secondaria</div>
+            <div class="quantity" id="prodqty">quantità</div>
+            <div class="price" id="prodprc">prezzo</div>
+            <div class="description" id="proddescr">descrizione</div>
+        </div>
+        <div class="menu">
+            <p><span id="addProduct">Aggiungi prodotto</span></p>
+            <p><span id="patchProduct">Modifica prodotto</span></p>
+        </div>
+    </div>
+
+    <script src="assets/js/adminprodotti.js"></script>
+</body>
+</html>

@@ -1,27 +1,34 @@
 #profile-name {
     color: white;
     font-size: 7rem;
-    text-align: left;
+    text-align: center;
 }
 
 .container {
     display: flex;
     flex-direction: row;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .container .profile-info {
-    flex: 5;
+    flex: 1;
     color: #fff;
     font-size: 2rem;
     text-align: left;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .container .image {
-    flex: auto;
+    flex: 1;
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
 }
 
 .container .image img {
+    width: 600px;
     height: 500px;
 }
 
@@ -32,28 +39,49 @@
 .order #order-title {
     font-size: 3rem;
     color: #fff;
+    margin-left: 100px;
 }
 
 .order .order-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 85%;
+    height: 380px;
+    overflow-y: scroll;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.order .order-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.order .order-container::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.order .order-container::-webkit-scrollbar-thumb {
+    background: #517965
 }
 
 .order .order-container .order-element {
+    margin-top: 20px;
+    border-left: 10px solid #517965;
+    background-color: #51796552;
     flex: 200px 1;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .order .order-container .order-element:hover {
     cursor: pointer;
-    filter: brightness(0.7);
+    background-color: #5179656d;
 }
 
 .order .order-container .order-element .date {
-    flex: 2;
+    flex: 1;
     font-size: 28px;
     color: #fff;
     align-self: center;
@@ -76,6 +104,35 @@
     text-align: center;
 }
 
+.order .order-container .order-element .state-in-corso {
+    flex: 2;
+    font-size: 2rem;
+    color: orange;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .state-done {
+    flex: 2;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    text-align: center;
+}
+
+/* .order .order-container .order-element .details {
+    flex: 2;
+    font-size: 25px;
+    color: #517965;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .details:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+} */
+
 .order .order-container .order-element .blank {
     flex: 1;
     color: #fff;
@@ -95,6 +152,11 @@
     cursor: pointer;
     filter: brightness(0.7);
 }
+
+/*
+** CHANGE INFO MODAL
+**
+*/
 
 .success {
     position: fixed;
@@ -159,4 +221,369 @@
 .button-modal:hover {
     cursor: pointer;
     filter: brightness(0.7);
+}
+
+/*
+** ORDER DETAILS STYLESHEET
+**
+*/
+
+.details-container {
+    position: fixed;
+
+    width: 1300px;
+    height: 1000px;
+
+    background-color: #fff;
+    border: 2px solid #517965;
+}
+
+.first-row {
+    display: flex;
+}
+
+.first-row>.title {
+    height: inherit;
+    flex: 1;
+    color: #517965;
+    font-size: 38px;
+    align-self: flex-end;
+    text-align: left;
+}
+
+.first-row>.X {
+    height: inherit;
+    flex: 1;
+    color: #517965;
+    font-size: 4rem;
+    text-align: right;
+}
+
+.first-row>.X span:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.second-row {
+    display: flex;
+    flex-direction: row;
+    height: 900px;
+}
+
+.second-row>.info {
+    flex: 1;
+    color: #517965;
+    font-size: 2rem;
+    text-align: center;
+    align-self: center;
+}
+
+.second-row>.products {
+    flex: 1;
+    background-color: #fff;
+    margin-right: 50px;
+    overflow-y: scroll;
+}
+
+.second-row>.products::-webkit-scrollbar {
+    width: 10px;
+}
+
+.second-row>.products::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+.second-row>.products::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.second-row>.products .row {
+    display: flex;
+    height: auto;
+    margin-top: 20px;
+    background-color: #51796552;
+}
+
+.second-row>.products .row .image{
+    flex: 1;
+    height: 200px;
+}
+
+.second-row>.products .row .image img{
+    width: 200px;
+    height: 200px;
+}
+
+.second-row>.products .row .name{
+    flex: 1;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.second-row>.products .row .quantity{
+    flex: 1;
+    font-size: 25px;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.second-row>.products .row .price{
+    flex: 1;
+    font-size: 28px;
+    color: #517965;
+    align-self: center;
+}
+
+/*
+** MEDIA QUERY BREAKPOINTS
+**
+*/
+
+@media (max-width:985px)  
+{
+    #profile-name {
+        font-size: 5rem;
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .container .profile-info {
+        font-size: 25px;
+    }
+
+    .container .image {
+        margin-top: 20px;
+    }
+
+    .container .image img {
+        width: 300px;
+        height: 250px;
+    }
+
+    .order #order-title {
+        font-size: 2rem;
+        color: #fff;
+        margin-left: 10px;
+    }
+
+    .order .order-container {
+        height: 300px;
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    .order .order-container .order-element {
+        flex: 70px 1;
+    }
+
+    .order .order-container .order-element .date {
+        flex: 1;
+        font-size: 16px;
+    }
+    
+    .order .order-container .order-element .totalmoney {
+        flex: 2;
+        font-size: 16px;
+    }
+    
+    .order .order-container .order-element .order-number {
+        flex: 2;
+        font-size: 16px;
+    }
+    
+    .order .order-container .order-element .state-in-corso {
+        flex: 2;
+        font-size: 16px;
+    }
+    
+    .order .order-container .order-element .state-done {
+        flex: 2;
+        font-size: 16px;
+    }
+
+    .success {
+        font-size: 2rem;
+        height: 333px;
+        width: 466px;
+    }
+
+    .x-button {
+        font-size: 2rem;
+        height: 67px;
+    }
+    
+    .message {
+        font-size: 18px;
+    }
+    
+    .link {
+        font-size: 18px;
+    }
+    
+    .input-modal {
+        font-size: 18px;
+    }
+    
+    .button-modal {
+        font-size: 18px;
+    }
+
+}
+
+@media (max-width:1296px)
+{
+    .details-container {
+        width: 650px;
+        height: 500px;
+    }
+    
+    .first-row {
+        display: flex;
+    }
+    
+    .first-row>.title {
+        font-size: 28px;
+    }
+    
+    .first-row>.X {
+        font-size: 3rem;
+    }
+
+    .second-row {
+        display: flex;
+        flex-direction: row;
+        height: 400px;
+    }
+    
+    .second-row>.info {
+        font-size: 28px;
+    }
+    
+    .second-row>.products {
+        margin-right: 28px;
+    }
+    
+    .second-row>.products::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    .second-row>.products::-webkit-scrollbar-track {
+        background: #fff;
+    }
+    
+    .second-row>.products::-webkit-scrollbar-thumb {
+        background: #517965
+    }
+    
+    .second-row>.products .row {
+        display: flex;
+        height: auto;
+        margin-top: 10px;
+        background-color: #51796552;
+    }
+    
+    .second-row>.products .row .image{
+        flex: 1;
+        height: 100px;
+    }
+    
+    .second-row>.products .row .image img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .second-row>.products .row .name{
+        font-size: 2rem;
+    }
+    
+    .second-row>.products .row .quantity{
+        font-size: 28px;
+    }
+    
+    .second-row>.products .row .price{
+        font-size: 28px;
+    }
+}
+
+/* order details */
+@media (max-width:800px)  
+{
+    .details-container {
+        width: 433px;
+        height: 333px;
+    }
+    
+    .first-row {
+        display: flex;
+    }
+    
+    .first-row>.title {
+        font-size: 20px;
+    }
+    
+    .first-row>.X {
+        height: inherit;
+        flex: 1;
+        color: #517965;
+        font-size: 2rem;
+        text-align: right;
+    }
+
+    .second-row {
+        display: flex;
+        flex-direction: row;
+        height: 250px;
+    }
+    
+    .second-row>.info {
+        font-size: 20px;
+    }
+    
+    .second-row>.products {
+        margin-right: 20px;
+    }
+    
+    .second-row>.products::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    .second-row>.products::-webkit-scrollbar-track {
+        background: #fff;
+    }
+    
+    .second-row>.products::-webkit-scrollbar-thumb {
+        background: #517965
+    }
+    
+    .second-row>.products .row {
+        display: flex;
+        height: auto;
+        margin-top: 10px;
+        background-color: #51796552;
+    }
+    
+    .second-row>.products .row .image{
+        flex: 1;
+        height: 67px;
+    }
+    
+    .second-row>.products .row .image img{
+        width: 67px;
+        height: 67px;
+    }
+    
+    .second-row>.products .row .name{
+        font-size: 20px;
+    }
+    
+    .second-row>.products .row .quantity{
+        font-size: 1rem;
+    }
+    
+    .second-row>.products .row .price{
+        font-size: 1rem;
+    }
 }
