@@ -129,6 +129,18 @@ const main = () => {
             state.style.color = "orange";
         }
 
+        switch(order.state) {
+            case "in corso":
+                state.style.color = "orange";
+                break;
+            case "annullato":
+                state.style.color = "red";
+                break;
+            case "spedito":
+                state.style.color = "green";
+                break;
+        }
+
         const products = document.createElement("div");
         products.className = "products";
         secondRow.appendChild(products);
@@ -202,8 +214,11 @@ const main = () => {
                     case "in corso":
                         color_state = "state-in-corso";
                         break;
-                    default:
+                    case "spedito":
                         color_state = "state-done";
+                        break;
+                    case "annullato":
+                        color_state = "state-annullato";
                         break;
                 }
                 const orderState = document.createElement("div");

@@ -19,6 +19,7 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.4.2",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "plotly.js-dist-min": "^2.26.1"
   }
 }

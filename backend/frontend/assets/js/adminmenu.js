@@ -12,6 +12,14 @@ const main = () => {
         userCard.addEventListener("click", () => {
             window.location.href = "adminutenti.html";
         })
+
+        orderCard.addEventListener("click", () => {
+            window.location.href = "adminordini.html";
+        })
+
+        statsCard.addEventListener("click", () => {
+            window.location.href = "adminstats.html";
+        })
     }
 
     setEvents();

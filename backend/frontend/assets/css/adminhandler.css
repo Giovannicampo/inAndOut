@@ -313,7 +313,7 @@
 
 .users-row>.all-users .row .image{
     flex: 1;
-    height: 200px;
+    width: 200px;
 }
 
 .users-row>.all-users .row .image img{
@@ -327,4 +327,573 @@
     color: #517965;
     align-self: center;
     margin-left: 10px;
+}
+
+.users-row>.all-users .row .email{
+    flex: 100px;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.users-row>.info{
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    display: flex;
+    border: 1px solid #517965;
+}
+
+.users-row>.info .text {
+    flex: 1;
+    color: #fff;
+    font-size: 28px;
+}
+
+.users-row>.info .tit-text {
+    flex: 1;
+    color: #517965;
+    font-size: 2rem;
+}
+
+.users-row>.info .orders {
+    flex: 5;
+    border: 1px solid #fff;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+}
+
+.users-row>.info .orders::-webkit-scrollbar {
+    width: 10px;
+}
+
+.users-row>.info .orders::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.users-row>.info .orders::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.users-row>.info .orders .row {
+    flex: 1;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.users-row>.info .orders .row:hover {
+    cursor: pointer;
+    background-color: #51796576;
+}
+
+.users-row>.info .orders .row .text {
+    flex: 1;
+    color: #fff;
+    text-align: center;
+    font-size: 21px;
+}
+
+/*
+** ORDERS PAGE
+**
+*/
+
+.order-title {
+    color: #fff;
+    font-size: 4rem;
+    margin-left: 30px;
+}
+
+.order-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.order-row>.all-orders {
+    flex: 2;
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-right: 20px;
+    flex-wrap: nowrap;
+}
+
+.order-row>.all-orders::-webkit-scrollbar {
+    width: 10px;
+}
+
+.order-row>.all-orders::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.order-row>.all-orders::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.order-row>.all-orders .row{
+    flex: 1;
+    margin-top: 20px;
+    display: flex;
+    height: auto;
+}
+
+.order-row>.all-orders .row:hover {
+    cursor: pointer;
+    background-color: #51796576;
+}
+
+.order-row>.all-orders .row .image{
+    flex: 1;
+    width: 150px;
+    align-self: center;
+}
+
+.order-row>.all-orders .row .image img{
+    width: 150px;
+    height: 150px;
+}
+
+.order-row>.all-orders .row .name{
+    flex: 1;
+    font-size: 2rem;
+    color: #517965;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.order-row>.all-orders .row .tit-name{
+    flex: 1;
+    font-size: 2rem;
+    color: #fff;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.order-row>.all-orders .row .in-corso{
+    flex: 1;
+    font-size: 2rem;
+    color: orange;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.order-row>.all-orders .row .spedito{
+    flex: 1;
+    font-size: 2rem;
+    color: green;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.order-row>.all-orders .row .annullato{
+    flex: 1;
+    font-size: 2rem;
+    color: red;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.order-row>.info {
+    flex: 1;
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-right: 20px;
+    flex-wrap: nowrap;
+    border: 1px solid #517965;
+}
+
+.order-row>.info .text {
+    flex: 1;
+    color: #fff;
+    font-size: 28px;
+}
+
+.order-row>.info .tit-text {
+    flex: 1;
+    color: #517965;
+    font-size: 2rem;
+}
+
+.order-row>.info .state {
+    flex: 2;
+    display: flex;
+}
+
+.order-row>.info .state .annullato {
+    flex: 1;
+    color: red;
+    text-align: center;
+    align-self: center;
+    border: 1px solid red;
+    margin-left: 20px;
+}
+
+.order-row>.info .state .annullato:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.order-row>.info .state .annullato img {
+    height: 80px;
+    width: 80px;
+}
+
+.order-row>.info .state .in-corso {
+    flex: 1;
+    color: orange;
+    text-align: center;
+    align-self: center;
+    border: 1px solid orange;
+    margin-left: 20px;
+}
+
+.order-row>.info .state .in-corso:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.order-row>.info .state .in-corso img {
+    height: 80px;
+    width: 80px;
+}
+
+.order-row>.info .state .spedito {
+    flex: 1;
+    color: green;
+    text-align: center;
+    align-self: center;
+    border: 1px solid green;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.order-row>.info .state .spedito:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.order-row>.info .state .spedito img {
+    height: 80px;
+    width: 80px;
+}
+
+.order-row>.info .products {
+    flex: 5;
+    border: 1px solid #fff;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+}
+
+.order-row>.info .products::-webkit-scrollbar {
+    width: 10px;
+}
+
+.order-row>.info .products::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.order-row>.info .products::-webkit-scrollbar-thumb {
+    background: #517965
+}
+
+.order-row>.info .products .row {
+    flex: 1;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.order-row>.info .products .row:hover {
+    cursor: pointer;
+    background-color: #51796576;
+}
+
+.order-row>.info .products .row .text {
+    flex: 1;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+
+.order-row>.info .products .row .image {
+    flex: 1;
+    text-align: center;
+    align-self: center;
+}
+
+.order-row>.info .products .row .image img{
+    height: 80px;
+    width: 80px;
+}
+
+/*
+** STATS PAGE
+**
+*/
+
+.stats-title {
+    color: #fff;
+    font-size: 4rem;
+    margin-left: 30px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .row-1 {
+    flex: 1;
+    display: flex;
+}
+
+.main-container .row-1 .col{
+   flex: 1;
+   align-self: center;
+   text-align: center;
+}
+
+.main-container .row-1 .col img{
+    height: 200px;
+    width: 200px;
+}
+
+.main-container .row-1 .col p{
+    color: #fff;
+    font-size: 3rem;
+}
+
+.main-container .row-1 .col .smaller{
+    color: #fff;
+    font-size: 40px;
+}
+
+.margin-left-50px {
+    margin-left: 50px;
+}
+
+.margin-right-50px {
+    margin-right: 50px;
+}
+
+.main-container .col-1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .col-1 .row{
+    flex: 1;
+    align-self: center;
+    text-align: center;
+    width: 1000px;
+}
+
+.main-container .col-1 .row p{
+    color: #fff;
+    font-size: 3rem;
+}
+
+/*
+** MEDIA QUERY BREAKPOINTS
+**
+*/
+
+@media (max-width:1084px)  
+{
+    .order-title {
+        font-size: 36px;
+    }
+    .order-row {
+        flex-direction: column;
+    }
+
+    .order-row>.info .text {
+        font-size: 22px;
+    }   
+    
+    .order-row>.info .tit-text {
+        font-size: 28px;
+    }  
+
+    .order-row>.all-orders .row .image{
+        flex: 1;
+        width: 100px;
+        align-self: center;
+    }
+    
+    .order-row>.all-orders .row .image img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .order-row>.all-orders .row .name{
+        font-size: 25px;
+    }
+    
+    .order-row>.all-orders .row .tit-name{
+        font-size: 25px;
+    }
+
+    /*
+    ** STATS
+    **
+    */
+
+    .stats-title {
+        color: #fff;
+        font-size: 3rem;
+        margin-left: 30px;
+    }
+
+    .main-container .col-1 .row{
+        width: 500px;
+    }
+
+    .main-container .row-1 .col img{
+        height: 100px;
+        width: 100px;
+    }
+
+    .main-container .row-1 .col p{
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    .main-container .row-1 .col .smaller{
+        color: #fff;
+        font-size: 28px;
+    }
+    
+}
+
+@media (max-width:1512px)  {
+    .user-title {
+        font-size: 32px;
+    }
+    .users-row {
+        flex-direction: column;
+    }
+    
+    .users-row>.all-users .row .image{
+        flex: 1;
+        width: 100px;
+        align-self: center;
+    }
+    
+    .users-row>.all-users .row .image img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .users-row>.all-users .row .name{
+        font-size: 28px;
+    }
+    
+    .users-row>.all-users .row .email{
+        font-size: 28px;
+    }
+    
+    .users-row>.info .text {
+        font-size: 22px;
+    }
+    
+    .users-row>.info .tit-text {
+        font-size: 28px;
+    }
+}
+
+@media (max-width:635px)  
+{
+
+    /*
+    ** ORDERS
+    **
+    */
+
+    .order-title {
+        font-size: 2rem;
+    }
+    .order-row {
+        flex-direction: column;
+    }
+
+    .order-row>.info .text {
+        font-size: 18px;
+    }   
+    
+    .order-row>.info .tit-text {
+        font-size: 22px;
+    }  
+
+    .order-row>.all-orders .row .image{
+        flex: 1;
+        width: 80px;
+        align-self: center;
+    }
+    
+    .order-row>.all-orders .row .image img{
+        width: 80px;
+        height: 80px;
+    }
+    
+    .order-row>.all-orders .row .name{
+        font-size: 22px;
+    }
+    
+    .order-row>.all-orders .row .tit-name{
+        font-size: 22px;
+    }
+
+    /*
+    ** USERS
+    **
+    */
+
+    .user-title {
+        font-size: 28px;
+    }
+
+    .users-row {
+        flex-direction: column;
+    }
+    
+    .users-row>.all-users .row .image{
+        flex: 1;
+        width: 80px;
+        align-self: center;
+    }
+    
+    .users-row>.all-users .row .image img{
+        width: 80px;
+        height: 80px;
+    }
+    
+    .users-row>.all-users .row .name{
+        font-size: 24px;
+    }
+    
+    .users-row>.all-users .row .email{
+        font-size: 24px;
+    }
+    
+    .users-row>.info .text {
+        font-size: 18px;
+    }
+    
+    .users-row>.info .tit-text {
+        font-size: 24px;
+    }
+
+    /*
+    ** STATS
+    **
+    */
+
+    .main-container .row-1 {
+        flex-direction: column;
+    }
 }

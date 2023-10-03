@@ -61,7 +61,11 @@ router.patch('/update/:id', allowLogged, async (req, res) => {
             id, updatedData, options
         )
 
-        res.send(result)
+        // res.send(result)
+        res.status(200).json({
+            type: "success",
+            result: result
+        })
     }
     catch (error) {
         res.status(400).json({ message: error.message })

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>in&out - AdminHandler Statistiche</title>
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/adminhandler.css">
+</head>
+<body>
+    <div class="header white-text">
+        <div class="title">&nbsp &nbsp In&Out</div>
+        <div class="logo">
+            <a class="height-inherit" href="index.html">
+                <img src="assets/pics/header_logo.png" alt="logo not found">
+            </a>
+        </div>
+        <div class="contatti">
+            <span></span>
+            <span> <a class="white-text no-line" href="adminhandler.html">AdminHandler</a> </span>
+            <span> <a class="white-text no-line" href="admin.html">Sign Out</a> </span>
+        </div>
+    </div>
+
+    <span class="stats-title">Statistiche</span>
+
+    <div class="main-container margin-top-100px">
+        <div class="row-1">
+            <div class="col">
+                <p>Totale prodotti</p>
+                <img src="assets/pics/furnitures.png" alt="">
+                <p id="tot-prodotti"></p>
+            </div>
+            <div class="col">
+                <p>Totale utenti</p>
+                <img src="assets/pics/user.png" alt="">
+                <p id="tot-utenti"></p>
+            </div>
+            <div class="col">
+                <p>Totale ordini</p>
+                <img src="assets/pics/ordine_spedito.png" alt="">
+                <p id="tot-ordini"></p>
+            </div>
+            <div class="col">
+                <p>Totale Incassi</p>
+                <img src="assets/pics/money-bag.png" alt="">
+                <p id="tot-incassi"></p>
+            </div>
+        </div>
+
+        <div class="row-1 margin-top-50px">
+            <div class="col">
+                <p class="smaller">Spesa media per utente</p>
+                <img src="assets/pics/generous.png" alt="">
+                <p id="spesa-media"></p>
+            </div>
+            <div class="col">
+                <p class="smaller">Media di prodotti per ordine</p>
+                <img src="assets/pics/package-box.png" alt="">
+                <p id="prodotti-ordine">5</p>
+            </div>
+            <div class="col">
+                <p class="smaller">Media prezzi prodotti indoor</p>
+                <img src="assets/pics/indoor-logo.png" alt="">
+                <p id="prezzi-indoor">235.50</p>
+            </div>
+            <div class="col">
+                <p class="smaller">Media prezzi prodotti outdoor</p>
+                <img src="assets/pics/chairs.png" alt="">
+                <p id="prezzi-outdoor">450.20</p>
+            </div>
+        </div>
+
+        <div class="col-1 margin-top-100px">
+            <div class="row">
+                <div id="plot-prezzi-prodotti"></div>
+            </div>
+            <div class="row margin-top-50px">
+                <div id="plot-incassi"></div>
+            </div>
+            <div class="row margin-top-50px">
+                <div id="plot-prodotti-venduti"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/plotly-2.26.0.min.js" charset="utf-8"></script>
+    <script src="assets/js/adminstats.js"></script>
+</body>
+</html>

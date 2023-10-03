@@ -199,6 +199,27 @@ router.get("/me", allowLogged, async (req, res) => {
   }
 });
 
+// getAll users
+router.get("/getAll", allowAdmin, async (req,res) => {
+  try{
+      const data = await User.find();
+      res.json(data)
+  }
+  catch(error){
+      res.status(500).json({message: error.message})
+  }
+})
+
+router.get("/getById/:id", allowAdmin, async (req,res) => {
+  try{
+    const data = await User.findById(req.params.id);
+    res.json(data)
+  }
+  catch(error){
+      res.status(500).json({message: error.message})
+  }
+})
+
 //Update by ID Method
 router.patch('/update', allowLogged, async (req, res) => {
   try {

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>in&out - AdminHandler Ordini</title>
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/adminhandler.css">
+</head>
+<body>
+    <div class="header white-text">
+        <div class="title">&nbsp &nbsp In&Out</div>
+        <div class="logo">
+            <a class="height-inherit" href="index.html">
+                <img src="assets/pics/header_logo.png" alt="logo not found">
+            </a>
+        </div>
+        <div class="contatti">
+            <span></span>
+            <span> <a class="white-text no-line" href="adminhandler.html">AdminHandler</a> </span>
+            <span> <a class="white-text no-line" href="admin.html">Sign Out</a> </span>
+        </div>
+    </div>
+
+    <span class="order-title">Ordini</span>
+
+    <div class="order-row">
+        <div class="all-orders">
+            
+        </div>
+        <div class="info">
+            <p class="tit-text"> ID dell'ordine </p>
+            <p class="text" id="infoID"></p>
+            <p class="tit-text"> Data dell'ordine </p>
+            <p class="text" id="infoDate"></p>
+            <p class="tit-text"> Utente </p>
+            <p class="text" id="infoUser"></p>
+            <p class="tit-text"> Stato </p>
+            <div class="state">
+                <div class="annullato" id="infoAnnullato">
+                    <img src="assets/pics/ordine_annullato.png" alt="">
+                    <span>Annullato</span>
+                </div>
+                <div class="in-corso" id="infoInCorso">
+                    <img src="assets/pics/ordine_in_corso.png" alt="">
+                    <span>In corso</span>
+                </div>
+                <div class="spedito" id="infoSpedito">
+                    <img src="assets/pics/ordine_spedito.png" alt="">
+                    <span>Spedito</span>
+                </div>
+            </div>
+            <p class="tit-text"> Importo totale </p>
+            <p class="text" id="infoTotalCost"></p>
+            <p class="tit-text"> Prodotti </p>
+            <div class="products" id="products-container">
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/adminorders.js"></script>
+</body>
+</html>

@@ -18,6 +18,10 @@ const main = () => {
         const prod_details = document.createElement("div");
         prod_details.style.top = `${window.innerHeight/2 - 300}px`;
         prod_details.style.left = `${window.innerWidth/2 - 500}px`;
+        if(innerWidth <= 870) {
+            prod_details.style.top = `${window.innerHeight/2 - 200}px`;
+            prod_details.style.left = `${window.innerWidth/2 - 275}px`;
+        }
         prod_details.setAttribute("id", "product-details");
         main_container.appendChild(prod_details);
 
@@ -150,7 +154,7 @@ const main = () => {
                             const current_product = {
                                 name: product.name,
                                 cart_quantity: selection.value,
-                                id: product.id,
+                                _id: product._id,
                                 quantity: product.quantity,
                                 maincategory: product.maincategory,
                                 category: product.category,
@@ -283,7 +287,7 @@ const main = () => {
                 quantity: products[i].quantity,
                 description: products[i].description,
                 image: products[i].image,
-                id: products[i].id
+                _id: products[i]._id
             };
 
             const current_card = cards[i];

@@ -362,44 +362,153 @@ body, html {
 
 @media (max-width:1450px)  
 {
-.header>.title {
-    font-size: 2rem;
-}
-
-.header>.logo {
-    height: 150px;
-}
-
-.header>.logo img {
-  height: 100px;
-  width: 100px;
-}
-
-.header>.contatti>span{
-    font-size: 22px;
-}
-  .footer {
-    font-size: 15px;
+  .header>.title {
+      font-size: 2rem;
   }
 
-  .footer>.logo {
-    height: 150px;
+  .header>.logo {
+      height: 150px;
   }
 
-  .footer>.logo img {
+  .header>.logo img {
     height: 100px;
     width: 100px;
   }
 
-  .lonely .description {
-    font-size: 25px;
+  .header>.contatti>span{
+      font-size: 22px;
+  }
+    .footer {
+      font-size: 15px;
+    }
+
+    .footer>.logo {
+      height: 150px;
+    }
+
+    .footer>.logo img {
+      height: 100px;
+      width: 100px;
+    }
+
+    .lonely .description {
+      font-size: 25px;
+    }
+    
+    .lonely .description>.text {
+      flex: 450px;
+    }
+    
+    .lonely .title {
+      font-size: 2rem;
+    }
+
+    .chisiamo-container .chisiamo {
+      flex: 1 400px;
+    }
+
+  .title>.text {
+      font-size: 4rem;
+  }
+
+  .title img {
+      height: 500px;
   }
   
-  .lonely .description>.text {
-    flex: 450px;
+  .environment>.blank {
+    height: 50px;
   }
   
-  .lonely .title {
+  .environment>.image {
+    flex: 1;
+    height: 600px;
+    align-self: center;
+  }
+  
+  .environment>.image>img {
+    height: inherit;
+  }
+  
+  .environment>.text {
+
     font-size: 2rem;
+  }
+  
+  .environment>.text>p {
+    width: 600px;
+  }
+
+  .description {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width:900px)  {
+    .title>.text {
+      font-size: 2rem;
+  }
+
+  .title img {
+      height: 400px;
+  }
+
+  .chisiamo-container .chisiamo {
+    font-size: 28px;
+  }
+  
+  .environment>.image {
+    flex: 1;
+    height: 400px;
+    align-self: center;
+  }
+  
+  .environment>.image>img {
+    height: inherit;
+  }
+  
+  .environment>.text {
+
+    font-size: 2rem;
+  }
+  
+  .environment>.text>p {
+    width: 600px;
+  }
+
+  .description {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width:630px)  {
+    .title>.text {
+      font-size: 28px;
+  }
+
+  .title img {
+      height: 250px;
+  }
+
+  .environment>.image {
+    flex: 1;
+    height: 250px;
+    align-self: center;
+  }
+  
+  .environment>.image>img {
+    height: inherit;
+  }
+  
+  .environment>.text {
+
+    font-size: 28px;
+  }
+  
+  .environment>.text>p {
+    width: 400px;
+  }
+
+  .description {
+    font-size: 28px;
   }
 }

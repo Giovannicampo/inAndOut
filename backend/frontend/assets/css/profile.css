@@ -115,7 +115,15 @@
 .order .order-container .order-element .state-done {
     flex: 2;
     font-size: 2rem;
-    color: #517965;
+    color: green;
+    align-self: center;
+    text-align: center;
+}
+
+.order .order-container .order-element .state-annullato {
+    flex: 2;
+    font-size: 2rem;
+    color: red;
     align-self: center;
     text-align: center;
 }
