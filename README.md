@@ -135,7 +135,7 @@ Administrator has its own dedicated page in which can manage every aspect of the
 
 ## Usage
 
-##### Install `npm` and execute `npm i` for installing all dependencies; then execute `npm start` to start the server and go to http://localhost:3000/ for accessing the homepage or to http://localhost:3000/adminhandler for the administrator handler page.
+Install `npm` and execute `npm i` for installing all dependencies; then execute `npm start` to start the server and go to http://localhost:3000/ for accessing the homepage or to http://localhost:3000/adminhandler for the administrator handler page.
 
 
 
